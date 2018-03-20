@@ -1,0 +1,729 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		382146781F75817B7A24FD0A /* Pods_chilDraw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C12768BCB567A7E3D9824D /* Pods_chilDraw.framework */; };
+		4C0850541FCD34DD007B6792 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0850531FCD34DD007B6792 /* AppDelegate.swift */; };
+		4C0850591FCD34DD007B6792 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0850571FCD34DD007B6792 /* Login.storyboard */; };
+		4C08505C1FCD34DD007B6792 /* chilDraw.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C08505A1FCD34DD007B6792 /* chilDraw.xcdatamodeld */; };
+		4C08505E1FCD34DD007B6792 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C08505D1FCD34DD007B6792 /* Assets.xcassets */; };
+		4C08506C1FCD3579007B6792 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08506B1FCD3579007B6792 /* LoginVC.swift */; };
+		4C08506E1FCD35BD007B6792 /* JoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08506D1FCD35BD007B6792 /* JoinVC.swift */; };
+		4C0850701FCD36F5007B6792 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C08506F1FCD36F5007B6792 /* Main.storyboard */; };
+		4C0850751FCD3742007B6792 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0850741FCD3742007B6792 /* MainVC.swift */; };
+		4C615F421FDBBA5E002EAE01 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F411FDBBA5E002EAE01 /* SplashVC.swift */; };
+		4C615F441FDC3212002EAE01 /* MainTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F431FDC3212002EAE01 /* MainTabVC.swift */; };
+		4C615F461FDC429D002EAE01 /* DrawViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F451FDC429D002EAE01 /* DrawViewVC.swift */; };
+		4C615F481FDC430A002EAE01 /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F471FDC430A002EAE01 /* Stroke.swift */; };
+		4C615F571FDC482E002EAE01 /* DrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F561FDC482E002EAE01 /* DrawVC.swift */; };
+		4C615F5B1FDC54DE002EAE01 /* DrawMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F5A1FDC54DE002EAE01 /* DrawMainVC.swift */; };
+		4C615F5D1FDC54F5002EAE01 /* WordMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F5C1FDC54F5002EAE01 /* WordMainVC.swift */; };
+		4C615F5F1FDC55CE002EAE01 /* WordViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F5E1FDC55CE002EAE01 /* WordViewVC.swift */; };
+		4C615F611FDC6225002EAE01 /* apple.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4C615F601FDC6225002EAE01 /* apple.mp3 */; };
+		4CB36F0D201EFA4C0003ED35 /* chilDrawTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB36F0C201EFA4C0003ED35 /* chilDrawTests.swift */; };
+		4CB36F15201EFAAD0003ED35 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB36F14201EFAAD0003ED35 /* GraphView.swift */; };
+		4CB36F172024430B0003ED35 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB36F162024430B0003ED35 /* MainModel.swift */; };
+		4CB36F19202714F70003ED35 /* DrawVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB36F18202714F70003ED35 /* DrawVO.swift */; };
+		4CB6A3031FDD9DE90028B889 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6A3021FDD9DE90028B889 /* NetworkModel.swift */; };
+		4CB6A3061FDD9E2E0028B889 /* NetworkCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6A3051FDD9E2E0028B889 /* NetworkCallback.swift */; };
+		4CB6A3081FDDA0110028B889 /* JoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6A3071FDDA0110028B889 /* JoinModel.swift */; };
+		4CB6A30B1FDDA1CB0028B889 /* JoinMessageVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6A30A1FDDA1CB0028B889 /* JoinMessageVO.swift */; };
+		4CB6A30D1FDDA7E60028B889 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6A30C1FDDA7E60028B889 /* Extension.swift */; };
+		4CD720111FDDBA140092F061 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD720101FDDBA140092F061 /* LoginModel.swift */; };
+		4CD720131FDDBAA80092F061 /* LoginVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD720121FDDBAA80092F061 /* LoginVO.swift */; };
+		4CD720151FDDBEF50092F061 /* SettingMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD720141FDDBEF50092F061 /* SettingMainVC.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4CB36F0F201EFA4C0003ED35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C0850481FCD34DD007B6792 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C08504F1FCD34DD007B6792;
+			remoteInfo = chilDraw;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1D7B1F1B55E70A832AC357E0 /* Pods-chilDraw.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chilDraw.debug.xcconfig"; path = "Pods/Target Support Files/Pods-chilDraw/Pods-chilDraw.debug.xcconfig"; sourceTree = "<group>"; };
+		3AC49D4F29D5C3F6E4552025 /* Pods-chilDraw.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chilDraw.release.xcconfig"; path = "Pods/Target Support Files/Pods-chilDraw/Pods-chilDraw.release.xcconfig"; sourceTree = "<group>"; };
+		4C0850501FCD34DD007B6792 /* chilDraw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chilDraw.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C0850531FCD34DD007B6792 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4C0850581FCD34DD007B6792 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		4C08505B1FCD34DD007B6792 /* chilDraw.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = chilDraw.xcdatamodel; sourceTree = "<group>"; };
+		4C08505D1FCD34DD007B6792 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4C0850621FCD34DD007B6792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C08506B1FCD3579007B6792 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		4C08506D1FCD35BD007B6792 /* JoinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVC.swift; sourceTree = "<group>"; };
+		4C08506F1FCD36F5007B6792 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4C0850741FCD3742007B6792 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		4C615F411FDBBA5E002EAE01 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		4C615F431FDC3212002EAE01 /* MainTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabVC.swift; sourceTree = "<group>"; };
+		4C615F451FDC429D002EAE01 /* DrawViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawViewVC.swift; sourceTree = "<group>"; };
+		4C615F471FDC430A002EAE01 /* Stroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
+		4C615F561FDC482E002EAE01 /* DrawVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawVC.swift; sourceTree = "<group>"; };
+		4C615F5A1FDC54DE002EAE01 /* DrawMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawMainVC.swift; sourceTree = "<group>"; };
+		4C615F5C1FDC54F5002EAE01 /* WordMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMainVC.swift; sourceTree = "<group>"; };
+		4C615F5E1FDC55CE002EAE01 /* WordViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordViewVC.swift; sourceTree = "<group>"; };
+		4C615F601FDC6225002EAE01 /* apple.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = apple.mp3; sourceTree = "<group>"; };
+		4CB36F0A201EFA4C0003ED35 /* chilDrawTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chilDrawTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CB36F0C201EFA4C0003ED35 /* chilDrawTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chilDrawTests.swift; sourceTree = "<group>"; };
+		4CB36F0E201EFA4C0003ED35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CB36F14201EFAAD0003ED35 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		4CB36F162024430B0003ED35 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		4CB36F18202714F70003ED35 /* DrawVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawVO.swift; sourceTree = "<group>"; };
+		4CB6A3021FDD9DE90028B889 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
+		4CB6A3051FDD9E2E0028B889 /* NetworkCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCallback.swift; sourceTree = "<group>"; };
+		4CB6A3071FDDA0110028B889 /* JoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinModel.swift; sourceTree = "<group>"; };
+		4CB6A30A1FDDA1CB0028B889 /* JoinMessageVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMessageVO.swift; sourceTree = "<group>"; };
+		4CB6A30C1FDDA7E60028B889 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		4CD720101FDDBA140092F061 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		4CD720121FDDBAA80092F061 /* LoginVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVO.swift; sourceTree = "<group>"; };
+		4CD720141FDDBEF50092F061 /* SettingMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainVC.swift; sourceTree = "<group>"; };
+		C2C12768BCB567A7E3D9824D /* Pods_chilDraw.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chilDraw.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4C08504D1FCD34DD007B6792 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				382146781F75817B7A24FD0A /* Pods_chilDraw.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CB36F07201EFA4C0003ED35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C0850471FCD34DD007B6792 = {
+			isa = PBXGroup;
+			children = (
+				4C0850521FCD34DD007B6792 /* chilDraw */,
+				4CB36F0B201EFA4C0003ED35 /* chilDrawTests */,
+				4C0850511FCD34DD007B6792 /* Products */,
+				9A81B4D59920083B44F7952C /* Pods */,
+				5F6AAF4C8B3E7ED3ACB5FF01 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4C0850511FCD34DD007B6792 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C0850501FCD34DD007B6792 /* chilDraw.app */,
+				4CB36F0A201EFA4C0003ED35 /* chilDrawTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4C0850521FCD34DD007B6792 /* chilDraw */ = {
+			isa = PBXGroup;
+			children = (
+				4C0850621FCD34DD007B6792 /* Info.plist */,
+				4C0850531FCD34DD007B6792 /* AppDelegate.swift */,
+				4CB6A30C1FDDA7E60028B889 /* Extension.swift */,
+				4C0850711FCD3711007B6792 /* Storyboard */,
+				4CB6A3041FDD9E210028B889 /* Protocol */,
+				4C08506A1FCD3564007B6792 /* VO */,
+				4C0850691FCD355A007B6792 /* Model */,
+				4C0850681FCD354E007B6792 /* VC */,
+				4C615F601FDC6225002EAE01 /* apple.mp3 */,
+				4C08505D1FCD34DD007B6792 /* Assets.xcassets */,
+				4C08505A1FCD34DD007B6792 /* chilDraw.xcdatamodeld */,
+			);
+			path = chilDraw;
+			sourceTree = "<group>";
+		};
+		4C0850681FCD354E007B6792 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				4C0850731FCD3739007B6792 /* Home */,
+				4C0850761FCD49F6007B6792 /* Draw */,
+				4C615F581FDC54B0002EAE01 /* Word */,
+				4C615F591FDC54B4002EAE01 /* Setting */,
+				4C0850721FCD372B007B6792 /* Login */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		4C0850691FCD355A007B6792 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4CB6A3021FDD9DE90028B889 /* NetworkModel.swift */,
+				4CB6A3071FDDA0110028B889 /* JoinModel.swift */,
+				4CD720101FDDBA140092F061 /* LoginModel.swift */,
+				4CB36F162024430B0003ED35 /* MainModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4C08506A1FCD3564007B6792 /* VO */ = {
+			isa = PBXGroup;
+			children = (
+				4CB6A30A1FDDA1CB0028B889 /* JoinMessageVO.swift */,
+				4CD720121FDDBAA80092F061 /* LoginVO.swift */,
+				4CB36F18202714F70003ED35 /* DrawVO.swift */,
+			);
+			path = VO;
+			sourceTree = "<group>";
+		};
+		4C0850711FCD3711007B6792 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				4C0850571FCD34DD007B6792 /* Login.storyboard */,
+				4C08506F1FCD36F5007B6792 /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		4C0850721FCD372B007B6792 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4C08506B1FCD3579007B6792 /* LoginVC.swift */,
+				4C08506D1FCD35BD007B6792 /* JoinVC.swift */,
+				4C615F411FDBBA5E002EAE01 /* SplashVC.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		4C0850731FCD3739007B6792 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4C0850741FCD3742007B6792 /* MainVC.swift */,
+				4C615F431FDC3212002EAE01 /* MainTabVC.swift */,
+				4CB36F14201EFAAD0003ED35 /* GraphView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		4C0850761FCD49F6007B6792 /* Draw */ = {
+			isa = PBXGroup;
+			children = (
+				4C615F451FDC429D002EAE01 /* DrawViewVC.swift */,
+				4C615F471FDC430A002EAE01 /* Stroke.swift */,
+				4C615F561FDC482E002EAE01 /* DrawVC.swift */,
+				4C615F5A1FDC54DE002EAE01 /* DrawMainVC.swift */,
+			);
+			path = Draw;
+			sourceTree = "<group>";
+		};
+		4C615F581FDC54B0002EAE01 /* Word */ = {
+			isa = PBXGroup;
+			children = (
+				4C615F5C1FDC54F5002EAE01 /* WordMainVC.swift */,
+				4C615F5E1FDC55CE002EAE01 /* WordViewVC.swift */,
+			);
+			path = Word;
+			sourceTree = "<group>";
+		};
+		4C615F591FDC54B4002EAE01 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				4CD720141FDDBEF50092F061 /* SettingMainVC.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		4CB36F0B201EFA4C0003ED35 /* chilDrawTests */ = {
+			isa = PBXGroup;
+			children = (
+				4CB36F0C201EFA4C0003ED35 /* chilDrawTests.swift */,
+				4CB36F0E201EFA4C0003ED35 /* Info.plist */,
+			);
+			path = chilDrawTests;
+			sourceTree = "<group>";
+		};
+		4CB6A3041FDD9E210028B889 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				4CB6A3051FDD9E2E0028B889 /* NetworkCallback.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		5F6AAF4C8B3E7ED3ACB5FF01 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2C12768BCB567A7E3D9824D /* Pods_chilDraw.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A81B4D59920083B44F7952C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1D7B1F1B55E70A832AC357E0 /* Pods-chilDraw.debug.xcconfig */,
+				3AC49D4F29D5C3F6E4552025 /* Pods-chilDraw.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4C08504F1FCD34DD007B6792 /* chilDraw */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C0850651FCD34DD007B6792 /* Build configuration list for PBXNativeTarget "chilDraw" */;
+			buildPhases = (
+				1E222A7854A8E27BBFD1A5FE /* [CP] Check Pods Manifest.lock */,
+				4C08504C1FCD34DD007B6792 /* Sources */,
+				4C08504D1FCD34DD007B6792 /* Frameworks */,
+				4C08504E1FCD34DD007B6792 /* Resources */,
+				F38BDF50D8FA8153792F5BAB /* [CP] Embed Pods Frameworks */,
+				E8EA2ABF952B7CA9D611A432 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = chilDraw;
+			productName = chilDraw;
+			productReference = 4C0850501FCD34DD007B6792 /* chilDraw.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4CB36F09201EFA4C0003ED35 /* chilDrawTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CB36F11201EFA4C0003ED35 /* Build configuration list for PBXNativeTarget "chilDrawTests" */;
+			buildPhases = (
+				4CB36F06201EFA4C0003ED35 /* Sources */,
+				4CB36F07201EFA4C0003ED35 /* Frameworks */,
+				4CB36F08201EFA4C0003ED35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4CB36F10201EFA4C0003ED35 /* PBXTargetDependency */,
+			);
+			name = chilDrawTests;
+			productName = chilDrawTests;
+			productReference = 4CB36F0A201EFA4C0003ED35 /* chilDrawTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4C0850481FCD34DD007B6792 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "갓거";
+				TargetAttributes = {
+					4C08504F1FCD34DD007B6792 = {
+						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0910;
+						ProvisioningStyle = Automatic;
+					};
+					4CB36F09201EFA4C0003ED35 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4C08504F1FCD34DD007B6792;
+					};
+				};
+			};
+			buildConfigurationList = 4C08504B1FCD34DD007B6792 /* Build configuration list for PBXProject "chilDraw" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4C0850471FCD34DD007B6792;
+			productRefGroup = 4C0850511FCD34DD007B6792 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4C08504F1FCD34DD007B6792 /* chilDraw */,
+				4CB36F09201EFA4C0003ED35 /* chilDrawTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4C08504E1FCD34DD007B6792 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C08505E1FCD34DD007B6792 /* Assets.xcassets in Resources */,
+				4C615F611FDC6225002EAE01 /* apple.mp3 in Resources */,
+				4C0850591FCD34DD007B6792 /* Login.storyboard in Resources */,
+				4C0850701FCD36F5007B6792 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CB36F08201EFA4C0003ED35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1E222A7854A8E27BBFD1A5FE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-chilDraw-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8EA2ABF952B7CA9D611A432 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-chilDraw/Pods-chilDraw-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F38BDF50D8FA8153792F5BAB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-chilDraw/Pods-chilDraw-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-chilDraw/Pods-chilDraw-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4C08504C1FCD34DD007B6792 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD720111FDDBA140092F061 /* LoginModel.swift in Sources */,
+				4C615F5B1FDC54DE002EAE01 /* DrawMainVC.swift in Sources */,
+				4C615F5F1FDC55CE002EAE01 /* WordViewVC.swift in Sources */,
+				4CB36F15201EFAAD0003ED35 /* GraphView.swift in Sources */,
+				4C08506E1FCD35BD007B6792 /* JoinVC.swift in Sources */,
+				4C0850751FCD3742007B6792 /* MainVC.swift in Sources */,
+				4C08505C1FCD34DD007B6792 /* chilDraw.xcdatamodeld in Sources */,
+				4CD720151FDDBEF50092F061 /* SettingMainVC.swift in Sources */,
+				4CB6A3061FDD9E2E0028B889 /* NetworkCallback.swift in Sources */,
+				4C615F461FDC429D002EAE01 /* DrawViewVC.swift in Sources */,
+				4CB36F19202714F70003ED35 /* DrawVO.swift in Sources */,
+				4C615F5D1FDC54F5002EAE01 /* WordMainVC.swift in Sources */,
+				4C0850541FCD34DD007B6792 /* AppDelegate.swift in Sources */,
+				4CB6A30D1FDDA7E60028B889 /* Extension.swift in Sources */,
+				4CB36F172024430B0003ED35 /* MainModel.swift in Sources */,
+				4C08506C1FCD3579007B6792 /* LoginVC.swift in Sources */,
+				4C615F481FDC430A002EAE01 /* Stroke.swift in Sources */,
+				4CB6A3081FDDA0110028B889 /* JoinModel.swift in Sources */,
+				4CD720131FDDBAA80092F061 /* LoginVO.swift in Sources */,
+				4C615F421FDBBA5E002EAE01 /* SplashVC.swift in Sources */,
+				4C615F441FDC3212002EAE01 /* MainTabVC.swift in Sources */,
+				4CB6A3031FDD9DE90028B889 /* NetworkModel.swift in Sources */,
+				4C615F571FDC482E002EAE01 /* DrawVC.swift in Sources */,
+				4CB6A30B1FDDA1CB0028B889 /* JoinMessageVO.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CB36F06201EFA4C0003ED35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CB36F0D201EFA4C0003ED35 /* chilDrawTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4CB36F10201EFA4C0003ED35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C08504F1FCD34DD007B6792 /* chilDraw */;
+			targetProxy = 4CB36F0F201EFA4C0003ED35 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4C0850571FCD34DD007B6792 /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C0850581FCD34DD007B6792 /* Base */,
+			);
+			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4C0850631FCD34DD007B6792 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4C0850641FCD34DD007B6792 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4C0850661FCD34DD007B6792 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D7B1F1B55E70A832AC357E0 /* Pods-chilDraw.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 86PPC52X64;
+				INFOPLIST_FILE = chilDraw/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.godp.chilDraw;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		4C0850671FCD34DD007B6792 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AC49D4F29D5C3F6E4552025 /* Pods-chilDraw.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 86PPC52X64;
+				INFOPLIST_FILE = chilDraw/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.godp.chilDraw;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		4CB36F12201EFA4C0003ED35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 86PPC52X64;
+				INFOPLIST_FILE = chilDrawTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.godp.chilDrawTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/chilDraw.app/chilDraw";
+			};
+			name = Debug;
+		};
+		4CB36F13201EFA4C0003ED35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 86PPC52X64;
+				INFOPLIST_FILE = chilDrawTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.godp.chilDrawTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/chilDraw.app/chilDraw";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4C08504B1FCD34DD007B6792 /* Build configuration list for PBXProject "chilDraw" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C0850631FCD34DD007B6792 /* Debug */,
+				4C0850641FCD34DD007B6792 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C0850651FCD34DD007B6792 /* Build configuration list for PBXNativeTarget "chilDraw" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C0850661FCD34DD007B6792 /* Debug */,
+				4C0850671FCD34DD007B6792 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CB36F11201EFA4C0003ED35 /* Build configuration list for PBXNativeTarget "chilDrawTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CB36F12201EFA4C0003ED35 /* Debug */,
+				4CB36F13201EFA4C0003ED35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4C08505A1FCD34DD007B6792 /* chilDraw.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4C08505B1FCD34DD007B6792 /* chilDraw.xcdatamodel */,
+			);
+			currentVersion = 4C08505B1FCD34DD007B6792 /* chilDraw.xcdatamodel */;
+			path = chilDraw.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 4C0850481FCD34DD007B6792 /* Project object */;
+}
