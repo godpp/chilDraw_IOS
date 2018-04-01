@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-class JoinVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
+class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
     
     @IBOutlet var usernameTxt: UITextField!
     @IBOutlet var emailTxt: UITextField!
     @IBOutlet var pwdTxt: UITextField!
     @IBOutlet var confirmpwdTxt: UITextField!
-    @IBOutlet var joinBtn: UIButton!
+    @IBOutlet var nextBtn: UIButton!
     
     @IBOutlet var nameChk: UILabel!
     @IBOutlet var emailChk: UILabel!
@@ -29,6 +29,74 @@ class JoinVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
     var check = true
     var msg : String?
     
+    var username : String?
+    var email : String?
+    var pwd : String?
+    
+    func networkResult(resultData: Any, code: String) {
+        if code == "dup_email_ok"{
+            emailChk.isHidden = true
+        }
+        else if code == "dup_email_fail"{
+            emailChk.isHidden = false
+        }
+        else{
+            simpleAlert(title: "중복확인 오류", msg: "개발자에게 문의하세요.")
+        }
+        
+        if code == "dup_name_ok"{
+            nameChk.isHidden = true
+        }
+        else if code == "dup_name_fail"{
+            nameChk.isHidden = false
+        }
+        else{
+            simpleAlert(title: "중복확인 오류", msg: "개발자에게 문의하세요.")
+        }
+    }
+    
+    func networkFailed() {
+        simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인하세요.")
+    }
+    
+    //중복확인
+    @objc func duplicateCheck(_ sender: UITextField) {
+        let model = JoinModel(self)
+        if sender == usernameTxt {
+            let name = gsno(usernameTxt.text)
+            model.duplicateNickname(nickname: name)
+        }
+        else if sender == emailTxt{
+            let email = gsno(emailTxt.text)
+            model.duplicateEmail(email: email)
+        }
+    }
+    
+    //패스워드 일치 확인
+    @objc func confirmCheck() {
+        if pwdTxt.text == confirmpwdTxt.text {
+            confpwdChk.isHidden = true
+        }
+        else {
+            confpwdChk.isHidden = false
+        }
+    }
+    
+    @IBAction func nextBtn(_ sender: Any) {
+        username = gsno(usernameTxt.text)
+        email = gsno(emailTxt.text)
+        pwd = gsno(confirmpwdTxt.text)
+        
+        guard let joinVC2 = storyboard?.instantiateViewController(withIdentifier : "JoinVC2") as? JoinVC2
+            else{return}
+        
+        joinVC2.emailData = username
+        joinVC2.pwdData = pwd
+        joinVC2.usernameData = username
+        self.present(joinVC2, animated: true)
+        
+    }
+    
     override func viewDidLoad() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap_mainview(_:)))
         tap.delegate = self
@@ -38,7 +106,7 @@ class JoinVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
         emailChk.isHidden = true
         pwdChk.isHidden = true
         confpwdChk.isHidden = true
-        unablejoinBtn()
+        unablenextBtn()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +122,6 @@ class JoinVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
     
     
     func initAddTarget(){
-        joinBtn.addTarget(self, action: #selector(join), for: .touchUpInside)
         usernameTxt.addTarget(self, action: #selector(isValid), for: .editingChanged)
         usernameTxt.addTarget(self, action: #selector(duplicateCheck), for: .editingChanged)
         emailTxt.addTarget(self, action: #selector(isValid), for: .editingChanged)
@@ -64,56 +131,20 @@ class JoinVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
         confirmpwdTxt.addTarget(self, action: #selector(confirmCheck), for: .editingChanged)
     }
     
-    @objc func join() {
-        let model = JoinModel(self)
-        let nickname = gsno(usernameTxt.text)
-        let email = gsno(emailTxt.text)
-        let password = gsno(pwdTxt.text)
-        
-        model.createMember(email: email, pwd: password, gender: "", nickname: nickname, image: "", age: 1)
-    }
     
-    func unablejoinBtn(){
-        self.joinBtn.isEnabled = false
+    func unablenextBtn(){
+        self.nextBtn.isEnabled = false
     }
-    func enablejoinBtn(){
-        self.joinBtn.isEnabled = true
+    func enablenextBtn(){
+        self.nextBtn.isEnabled = true
     }
     
     @objc func isValid(){
         if !((usernameTxt.text?.isEmpty)! || (emailTxt.text?.isEmpty)! || (pwdTxt.text?.isEmpty)! || (confirmpwdTxt.text?.isEmpty)!) {
-            enablejoinBtn()
+            enablenextBtn()
         }
         else {
-            unablejoinBtn()
-        }
-    }
-    
-    @objc func duplicateCheck(_ sender: UITextField) {
-        let model = JoinModel(self)
-        if sender == usernameTxt {
-            let name = gsno(usernameTxt.text)
-            //model.usernameCheck(nickname: name, flag: 1)
-        }
-        else if sender == emailTxt {
-            let email = gsno(emailTxt.text)
-            //model.emailCheck(email: email, flag: 2)
-        }
-        else if sender == emailTxt {
-            let email = gsno(emailTxt.text)
-            //model.emailCheck(email: email, flag: 2)
-        }
-        else if sender == pwdTxt {
-            let email = gsno(pwdTxt.text)
-            //model.emailCheck(email: email, flag: 2)
-        }
-    }
-    @objc func confirmCheck() {
-        if pwdTxt.text == confirmpwdTxt.text {
-            confpwdChk.isHidden = true
-        }
-        else {
-            confpwdChk.isHidden = false
+            unablenextBtn()
         }
     }
     
@@ -123,6 +154,7 @@ class JoinVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
         }
         return true
     }
+    
     @objc func handleTap_mainview(_ sender: UITapGestureRecognizer?){
         self.joinStackView.becomeFirstResponder()
         self.joinStackView.resignFirstResponder()
@@ -155,32 +187,6 @@ class JoinVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
             logoLabel.isHidden = false
             view.layoutIfNeeded()
         }
-    }
-    
-    func networkResult(resultData: Any, code: String) {
-        if code == "1"{
-            guard let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else {return}
-            self.present(loginVC, animated: true)
-        }
-        else if code == "2"{
-            
-        }
-        else if code == "3"{
-            
-        }
-        else if code == "4"{
-            
-        }
-        else if code == "5"{
-            
-        }
-        else if code == "6"{
-            
-        }
-    }
-    
-    func networkFailed() {
-        simpleAlert(title: "오류", msg: "네트워크 연결 오류")
     }
     
     

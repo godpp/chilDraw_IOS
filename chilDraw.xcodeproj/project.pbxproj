@@ -13,7 +13,7 @@
 		4C08505C1FCD34DD007B6792 /* chilDraw.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C08505A1FCD34DD007B6792 /* chilDraw.xcdatamodeld */; };
 		4C08505E1FCD34DD007B6792 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C08505D1FCD34DD007B6792 /* Assets.xcassets */; };
 		4C08506C1FCD3579007B6792 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08506B1FCD3579007B6792 /* LoginVC.swift */; };
-		4C08506E1FCD35BD007B6792 /* JoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08506D1FCD35BD007B6792 /* JoinVC.swift */; };
+		4C08506E1FCD35BD007B6792 /* JoinVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08506D1FCD35BD007B6792 /* JoinVC1.swift */; };
 		4C0850701FCD36F5007B6792 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C08506F1FCD36F5007B6792 /* Main.storyboard */; };
 		4C0850751FCD3742007B6792 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0850741FCD3742007B6792 /* MainVC.swift */; };
 		4C615F421FDBBA5E002EAE01 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F411FDBBA5E002EAE01 /* SplashVC.swift */; };
@@ -25,6 +25,7 @@
 		4C615F5D1FDC54F5002EAE01 /* WordMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F5C1FDC54F5002EAE01 /* WordMainVC.swift */; };
 		4C615F5F1FDC55CE002EAE01 /* WordViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F5E1FDC55CE002EAE01 /* WordViewVC.swift */; };
 		4C615F611FDC6225002EAE01 /* apple.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4C615F601FDC6225002EAE01 /* apple.mp3 */; };
+		4C6250A0206F568D002A7CC1 /* JoinVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62509F206F568D002A7CC1 /* JoinVC2.swift */; };
 		4CB36F0D201EFA4C0003ED35 /* chilDrawTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB36F0C201EFA4C0003ED35 /* chilDrawTests.swift */; };
 		4CB36F15201EFAAD0003ED35 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB36F14201EFAAD0003ED35 /* GraphView.swift */; };
 		4CB36F172024430B0003ED35 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB36F162024430B0003ED35 /* MainModel.swift */; };
@@ -59,7 +60,7 @@
 		4C08505D1FCD34DD007B6792 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C0850621FCD34DD007B6792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C08506B1FCD3579007B6792 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		4C08506D1FCD35BD007B6792 /* JoinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVC.swift; sourceTree = "<group>"; };
+		4C08506D1FCD35BD007B6792 /* JoinVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVC1.swift; sourceTree = "<group>"; };
 		4C08506F1FCD36F5007B6792 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4C0850741FCD3742007B6792 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		4C615F411FDBBA5E002EAE01 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
@@ -71,6 +72,7 @@
 		4C615F5C1FDC54F5002EAE01 /* WordMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMainVC.swift; sourceTree = "<group>"; };
 		4C615F5E1FDC55CE002EAE01 /* WordViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordViewVC.swift; sourceTree = "<group>"; };
 		4C615F601FDC6225002EAE01 /* apple.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = apple.mp3; sourceTree = "<group>"; };
+		4C62509F206F568D002A7CC1 /* JoinVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVC2.swift; sourceTree = "<group>"; };
 		4CB36F0A201EFA4C0003ED35 /* chilDrawTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chilDrawTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CB36F0C201EFA4C0003ED35 /* chilDrawTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chilDrawTests.swift; sourceTree = "<group>"; };
 		4CB36F0E201EFA4C0003ED35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -191,7 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				4C08506B1FCD3579007B6792 /* LoginVC.swift */,
-				4C08506D1FCD35BD007B6792 /* JoinVC.swift */,
+				4C08506D1FCD35BD007B6792 /* JoinVC1.swift */,
+				4C62509F206F568D002A7CC1 /* JoinVC2.swift */,
 				4C615F411FDBBA5E002EAE01 /* SplashVC.swift */,
 			);
 			path = Login;
@@ -443,7 +446,7 @@
 				4C615F5B1FDC54DE002EAE01 /* DrawMainVC.swift in Sources */,
 				4C615F5F1FDC55CE002EAE01 /* WordViewVC.swift in Sources */,
 				4CB36F15201EFAAD0003ED35 /* GraphView.swift in Sources */,
-				4C08506E1FCD35BD007B6792 /* JoinVC.swift in Sources */,
+				4C08506E1FCD35BD007B6792 /* JoinVC1.swift in Sources */,
 				4C0850751FCD3742007B6792 /* MainVC.swift in Sources */,
 				4C08505C1FCD34DD007B6792 /* chilDraw.xcdatamodeld in Sources */,
 				4CD720151FDDBEF50092F061 /* SettingMainVC.swift in Sources */,
@@ -451,6 +454,7 @@
 				4C615F461FDC429D002EAE01 /* DrawViewVC.swift in Sources */,
 				4CB36F19202714F70003ED35 /* DrawVO.swift in Sources */,
 				4C615F5D1FDC54F5002EAE01 /* WordMainVC.swift in Sources */,
+				4C6250A0206F568D002A7CC1 /* JoinVC2.swift in Sources */,
 				4C0850541FCD34DD007B6792 /* AppDelegate.swift in Sources */,
 				4CB6A30D1FDDA7E60028B889 /* Extension.swift in Sources */,
 				4CB36F172024430B0003ED35 /* MainModel.swift in Sources */,

@@ -39,8 +39,8 @@ class LoginVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
     }
     
     @IBAction func RegisterBtn(_ sender: Any) {
-        guard let joinVC = storyboard?.instantiateViewController(withIdentifier: "JoinVC") as? JoinVC else {return}
-        self.present(joinVC, animated: true)
+        guard let joinVC1 = storyboard?.instantiateViewController(withIdentifier: "JoinVC1") as? JoinVC1 else {return}
+        self.present(joinVC1, animated: true)
     }
     
     func initAddTarget(){

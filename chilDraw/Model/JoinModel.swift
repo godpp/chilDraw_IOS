@@ -12,7 +12,75 @@ import AlamofireObjectMapper
 
 class JoinModel : NetworkModel{
     
-    func createMember(email:String, pwd:String, gender:String, nickname:String, image:String, age:Int){
+    func duplicateEmail(email:String){
+        let URL : String = "\(baseURL)/users/signup/email"
+        
+        let body = [
+            "email" : email
+            ] as [String : String]
+        
+        Alamofire.request(URL, method: .post, parameters: body, encoding: JSONEncoding.default,
+                          headers:nil).responseObject{
+                            (response: DataResponse<JoinMessageVO>)in
+                            
+                            switch response.result{
+                            case .success:
+                                guard let message = response.result.value else{
+                                    self.view.networkFailed()
+                                    return
+                                }
+                                if message.msg == "email available"{
+                                    self.view.networkResult(resultData: "이메일 사용가능", code: "dup_email_ok")
+                                }
+                                else if message.msg == "duplicate email"{
+                                    self.view.networkResult(resultData: "전송 성공 시(201),중복일 때", code: "dup_email_fail")
+                                }
+                                else{
+                                    self.view.networkResult(resultData: "기타오류", code: "3")
+                                }
+                                
+                            case .failure(let err):
+                                print(err)
+                                self.view.networkFailed()
+                            }
+        }
+    }
+    
+    func duplicateNickname(nickname:String){
+        let URL : String = "\(baseURL)/users/signup/nickname"
+        
+        let body = [
+            "nickname" : nickname
+            ] as [String : String]
+        
+        Alamofire.request(URL, method: .post, parameters: body, encoding: JSONEncoding.default,
+                          headers:nil).responseObject{
+                            (response: DataResponse<JoinMessageVO>)in
+                            
+                            switch response.result{
+                            case .success:
+                                guard let message = response.result.value else{
+                                    self.view.networkFailed()
+                                    return
+                                }
+                                if message.msg == "nickname available"{
+                                    self.view.networkResult(resultData: "닉네임 사용가능", code: "dup_name_ok")
+                                }
+                                else if message.msg == "duplicate nickname"{
+                                    self.view.networkResult(resultData: "전송 성공 시(201),중복일 때", code: "dup_name_fail")
+                                }
+                                else{
+                                    self.view.networkResult(resultData: "기타오류", code: "3")
+                                }
+                                
+                            case .failure(let err):
+                                print(err)
+                                self.view.networkFailed()
+                            }
+        }
+    }
+    
+    func createMember(email:String, pwd:String, gender:String, nickname:String, age:Int){
         
         let URL : String = "\(baseURL)/users/signup"
         
@@ -21,7 +89,6 @@ class JoinModel : NetworkModel{
             "pwd" : pwd,
             "gender" : gender,
             "nickname" : nickname,
-            "image" : image,
             "age" : age
             ] as [String : Any]
         
