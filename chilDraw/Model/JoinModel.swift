@@ -36,7 +36,7 @@ class JoinModel : NetworkModel{
                                     self.view.networkResult(resultData: "전송 성공 시(201),중복일 때", code: "dup_email_fail")
                                 }
                                 else{
-                                    self.view.networkResult(resultData: "기타오류", code: "3")
+                                    self.view.networkResult(resultData: "기타오류", code: "4")
                                 }
                                 
                             case .failure(let err):
@@ -63,10 +63,10 @@ class JoinModel : NetworkModel{
                                     self.view.networkFailed()
                                     return
                                 }
-                                if message.msg == "nickname available"{
+                                if message.msg! == "nickname available"{
                                     self.view.networkResult(resultData: "닉네임 사용가능", code: "dup_name_ok")
                                 }
-                                else if message.msg == "duplicate nickname"{
+                                else if message.msg! == "duplicate nickname"{
                                     self.view.networkResult(resultData: "전송 성공 시(201),중복일 때", code: "dup_name_fail")
                                 }
                                 else{

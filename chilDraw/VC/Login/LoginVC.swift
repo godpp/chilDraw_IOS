@@ -22,6 +22,8 @@ class LoginVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
     
     var check = true
     var msg : String?
+    let ud = UserDefaults.standard
+    var userInfo : UserInfoVO?
     
     override func viewDidLoad() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap_mainview(_:)))
@@ -96,7 +98,7 @@ class LoginVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
     @objc func keyboardWillShow(notification: NSNotification) {
         if check {
             if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-                centerConstraintY.constant = -130
+                centerConstraintY.constant = -150
                 check = false
                 logoImgView.isHidden = true
                 view.layoutIfNeeded()
@@ -105,7 +107,7 @@ class LoginVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
     }
     @objc func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            centerConstraintY.constant = 130
+            centerConstraintY.constant = 150
             check = true
             logoImgView.isHidden = false
             view.layoutIfNeeded()
@@ -115,9 +117,12 @@ class LoginVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
     func networkResult(resultData: Any, code: String) {
         print(code)
         if code == "1"{
+            userInfo = resultData as? UserInfoVO
+            ud.setValue(gsno(userInfo?.token), forKey: "token")
+            ud.synchronize()
             let main_storyboard = UIStoryboard(name: "Main", bundle: nil)
             //메인 뷰컨트롤러 접근
-            guard let main = main_storyboard.instantiateViewController(withIdentifier: "MainTabVC") as? MainTabVC else {return}
+            guard let main = main_storyboard.instantiateViewController(withIdentifier: "MainVC") as? MainVC else {return}
             self.present(main, animated: true)
         }
         else{

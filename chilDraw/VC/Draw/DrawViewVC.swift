@@ -10,14 +10,24 @@ import Foundation
 import UIKit
 import AVFoundation
 
+
 class DrawViewVC : UIViewController, AVAudioRecorderDelegate, NetworkCallback{
     
     @IBOutlet var goodjob_ImgView: UIImageView!
     @IBOutlet var drawView: DrawVC!
     @IBOutlet var helpPageImgView: UIImageView!
+    @IBOutlet var wordLabel: UILabel!
     
     var delayInSeconds = 2.0
     var recordingTime = 4.0
+
+    
+    var wordData : String?
+    var categoryNumData : Int?
+    var arrNumData : Int?
+    var wordArr : String?
+    var word_idArr : String?
+    var room_idData : Int?
     
     func simpleAlert1(title: String, msg: String) {
         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
@@ -90,7 +100,7 @@ class DrawViewVC : UIViewController, AVAudioRecorderDelegate, NetworkCallback{
                 ]
                 //Create audio file name URL
                 let audioFilename = getDocumentsDirectory().appendingPathComponent("voice.wav")
-                //Create the audio recording, and assign ourselves as the delegate
+
                 audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
                 audioRecorder.delegate = self
                 audioRecorder.isMeteringEnabled = true
@@ -156,10 +166,22 @@ class DrawViewVC : UIViewController, AVAudioRecorderDelegate, NetworkCallback{
             finishAudioRecording(success: false)
         }
     }
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //문제 단어 설정
+        wordLabel.text = gsno(wordData)
+        
+        //DrawVC로 값 전달
+        drawView.room_id = gino(room_idData)
+        drawView.word = gsno(wordData)
+        drawView.category = gino(categoryNumData)
+        drawView.arrNum = gino(arrNumData)
+        drawView.wordArr = gsno(wordArr)
+        drawView.word_idArr = gsno(word_idArr)
+        
         autoDown()
         
         switch AVAudioSession.sharedInstance().recordPermission() {

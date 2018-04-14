@@ -16,13 +16,15 @@ class JoinVC2 : UIViewController, NetworkCallback, UIGestureRecognizerDelegate, 
     var usernameData : String?
     
     var check = true
-    var gender = -1
+    var gender = "unknown"
+    var age = -1
     
     var boy_off : UIImage = UIImage(named: "sign_boy_off")!
     var boy_on : UIImage = UIImage(named: "sign_boy_on")!
     var girl_off : UIImage = UIImage(named: "sign_girl_off")!
     var girl_on : UIImage = UIImage(named: "sign_girl_on")!
     
+    @IBOutlet var signupBtn: UIButton!
     @IBOutlet var boyBtn: UIButton!
     @IBOutlet var girlBtn: UIButton!
     @IBOutlet var ageLabel: UITextField!
@@ -37,7 +39,16 @@ class JoinVC2 : UIViewController, NetworkCallback, UIGestureRecognizerDelegate, 
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap_mainview(_:)))
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
+        signupBtn.isEnabled = false
+        var pickerView = UIPickerView()
         
+        pickerView.delegate = self
+        
+        ageLabel.inputView = pickerView
+        
+        for i in 0..<14{
+            ageArray.append("\(i)")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,21 +58,35 @@ class JoinVC2 : UIViewController, NetworkCallback, UIGestureRecognizerDelegate, 
         unregisterForKeyboardNotifications()
     }
     
+    @IBAction func signupBtn(_ sender: Any) {
+        let model = JoinModel(self)
+        model.createMember(email: gsno(emailData), pwd: gsno(pwdData), gender: gender, nickname: gsno(usernameData), age: gino(age))
+    }
+    
+    
     @IBAction func girlBtn(_ sender: Any) {
-        if gender == 2{
+        if gender == "male"{
             boyBtn.setImage(boy_off, for: .normal)
         }
         girlBtn.setImage(girl_on, for: .normal)
-        gender = 1
+        gender = "female"
+        isValid()
     }
     @IBAction func boyBtn(_ sender: Any) {
-        if gender == 1{
+        if gender == "female"{
             girlBtn.setImage(girl_off, for: .normal)
         }
         boyBtn.setImage(boy_on, for: .normal)
-        gender = 2
+        gender = "male"
+        isValid()
     }
     
+    //signup 활성화
+    func isValid(){
+        if gender != "unknown" && age != -1{
+            signupBtn.isEnabled = true
+        }
+    }
     
     @objc func donePressed(sender: UIBarButtonItem) {
         
@@ -96,13 +121,46 @@ class JoinVC2 : UIViewController, NetworkCallback, UIGestureRecognizerDelegate, 
     //행이 선택 될 때 텍스트 필드에 텍스트를 업데이트
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         ageLabel.text = ageArray[row] + " 세"
+        age = gino(Int(ageArray[row]))
+        isValid()
     }
     
     @IBAction func backBtn(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     func networkResult(resultData: Any, code: String) {
-        
+        print(emailData)
+        print(usernameData)
+        print(pwdData)
+        print(gender)
+        print(age)
+        if code == "1"{
+            let msg = resultData as? String
+            print(gsno(msg))
+            
+            guard let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else {return}
+            self.present(loginVC, animated: true)
+        }
+        else if code == "2"{
+            let msg = resultData as? String
+            simpleAlert(title: "오류", msg: gsno(msg))
+        }
+        else if code == "3"{
+            let msg = resultData as? String
+            simpleAlert(title: "오류", msg: gsno(msg))
+        }
+        else if code == "4"{
+            let msg = resultData as? String
+            simpleAlert(title: "오류", msg: gsno(msg))
+        }
+        else if code == "5"{
+            let msg = resultData as? String
+            simpleAlert(title: "오류", msg: gsno(msg))
+        }
+        else {
+            let msg = resultData as? String
+            simpleAlert(title: "오류", msg: gsno(msg))
+        }
     }
     
     func networkFailed() {

@@ -34,23 +34,28 @@ class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
     var pwd : String?
     
     func networkResult(resultData: Any, code: String) {
+        //이메일 중복확인
         if code == "dup_email_ok"{
+            emailChk.text = "이메일 중복입니다."
             emailChk.isHidden = true
         }
         else if code == "dup_email_fail"{
+            emailChk.text = "이메일 중복입니다."
             emailChk.isHidden = false
         }
-        else{
+        else if code == "4"{
             simpleAlert(title: "중복확인 오류", msg: "개발자에게 문의하세요.")
         }
-        
+        //닉네임 중복확인
         if code == "dup_name_ok"{
+            nameChk.text = "닉네임 중복입니다."
             nameChk.isHidden = true
         }
         else if code == "dup_name_fail"{
+            nameChk.text = "닉네임 중복입니다."
             nameChk.isHidden = false
         }
-        else{
+        else if code == "3"{
             simpleAlert(title: "중복확인 오류", msg: "개발자에게 문의하세요.")
         }
     }
@@ -59,7 +64,7 @@ class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
         simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인하세요.")
     }
     
-    //중복확인
+    //중복확인 모델
     @objc func duplicateCheck(_ sender: UITextField) {
         let model = JoinModel(self)
         if sender == usernameTxt {
@@ -68,8 +73,17 @@ class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
         }
         else if sender == emailTxt{
             let email = gsno(emailTxt.text)
-            model.duplicateEmail(email: email)
+            
+            if validateEmail(enteredEmail: email){
+                model.duplicateEmail(email: email)
+            }
+            else{
+                emailChk.text = "abc@abc.com 이메일 형식을 맞춰주세요!"
+                emailChk.isHidden = false
+                emailTxt.text = ""
+            }
         }
+        isValid()
     }
     
     //패스워드 일치 확인
@@ -80,6 +94,7 @@ class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
         else {
             confpwdChk.isHidden = false
         }
+        isValid()
     }
     
     @IBAction func nextBtn(_ sender: Any) {
@@ -90,7 +105,7 @@ class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
         guard let joinVC2 = storyboard?.instantiateViewController(withIdentifier : "JoinVC2") as? JoinVC2
             else{return}
         
-        joinVC2.emailData = username
+        joinVC2.emailData = email
         joinVC2.pwdData = pwd
         joinVC2.usernameData = username
         self.present(joinVC2, animated: true)
@@ -111,6 +126,7 @@ class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
     
     override func viewWillAppear(_ animated: Bool) {
         registerForKeyboardNotifications()
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         unregisterForKeyboardNotifications()
@@ -123,9 +139,10 @@ class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
     
     func initAddTarget(){
         usernameTxt.addTarget(self, action: #selector(isValid), for: .editingChanged)
-        usernameTxt.addTarget(self, action: #selector(duplicateCheck), for: .editingChanged)
+        usernameTxt.addTarget(self, action: #selector(duplicateCheck), for: .editingDidEnd)
         emailTxt.addTarget(self, action: #selector(isValid), for: .editingChanged)
-        emailTxt.addTarget(self, action: #selector(duplicateCheck), for: .editingChanged)
+        emailTxt.addTarget(self, action: #selector(duplicateCheck), for: .editingDidEnd)
+        pwdTxt.addTarget(self, action: #selector(pwdCheck), for: .editingDidEnd)
         pwdTxt.addTarget(self, action: #selector(isValid), for: .editingChanged)
         confirmpwdTxt.addTarget(self, action: #selector(isValid), for: .editingChanged)
         confirmpwdTxt.addTarget(self, action: #selector(confirmCheck), for: .editingChanged)
@@ -139,13 +156,40 @@ class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
         self.nextBtn.isEnabled = true
     }
     
+    @objc func validateEmail(enteredEmail:String) -> Bool {
+        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+        return emailPredicate.evaluate(with: enteredEmail)
+    }
+    
+    @objc func validatePwd(enteredPwd:String) -> Bool {
+        
+        let pwdFormat = "(?=.*[0-9])(?=.*[a-z]).{6,}"
+        let pwdPredicate = NSPredicate(format:"SELF MATCHES %@", pwdFormat)
+        return pwdPredicate.evaluate(with: enteredPwd)
+    }
+    
     @objc func isValid(){
-        if !((usernameTxt.text?.isEmpty)! || (emailTxt.text?.isEmpty)! || (pwdTxt.text?.isEmpty)! || (confirmpwdTxt.text?.isEmpty)!) {
+        if !((usernameTxt.text?.isEmpty)! || (emailTxt.text?.isEmpty)! || (pwdTxt.text?.isEmpty)! || (confirmpwdTxt.text?.isEmpty)! || (nameChk.isHidden) == false || (emailChk.isHidden) == false || pwdChk.isHidden == false || confpwdChk.isHidden == false) {
+            
             enablenextBtn()
         }
         else {
             unablenextBtn()
         }
+    }
+    @objc func pwdCheck(){
+        let enterPwd = gsno(pwdTxt.text)
+        
+        if validatePwd(enteredPwd: enterPwd) == false{
+            pwdChk.text = "6자리이상의 영문+숫자조합!"
+            pwdChk.isHidden = false
+            pwdTxt.text = ""
+        }
+        else{
+            pwdChk.isHidden = true
+        }
+        isValid()
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {

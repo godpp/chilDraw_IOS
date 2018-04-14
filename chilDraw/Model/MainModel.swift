@@ -13,14 +13,54 @@ import AlamofireObjectMapper
 
 class MainModel : NetworkModel{
     
-    func drawModel(word: String, string: String){
-        let URL : String = "\(baseURL)/image"
-        let body : [String:String] = [
-            "word": word,
-            "string": string
+    func categoryChoiceModel(category : Int, arrNum : Int, wordArr : String,word_idArr : String, token : String){
+        let URL : String = "\(baseURL)/game/imageList"
+       
+        let body : [String:Any] = [
+            "category" : category,
+            "arrNum" : arrNum,
+            "wordArr" : wordArr,
+            "word_idArr" : word_idArr
         ]
         
-        Alamofire.request(URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: nil).responseObject{
+        Alamofire.request(URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: ["user_token" : token]).responseObject{
+            (response:DataResponse<RandomWordVO>) in
+            switch response.result {
+            case .success:
+                guard let message = response.result.value else{
+                    self.view.networkFailed()
+                    return
+                }
+                
+                if message.msg == "success"{
+                    if let data = message.result{
+                        self.view.networkResult(resultData: data, code: "success")
+                    }
+                }
+                else if message.msg == "finish"{
+                    if let finishmsg = message.msg{
+                        self.view.networkResult(resultData: finishmsg, code: "finish")
+                    }
+                }
+                else if message.msg == "5"{
+                    self.view.networkResult(resultData: "기타오류(500)", code: "fail")
+                }
+            case .failure(let err):
+                print(err)
+                self.view.networkFailed()
+            }
+        }
+    }
+    
+    func drawModel(draw: String, word: String, room_id: Int, token: String){
+        let URL : String = "\(baseURL)/game/imageTest"
+        let body : [String:Any] = [
+            "draw": draw,
+            "word": word,
+            "room_id": room_id
+        ]
+        
+        Alamofire.request(URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: ["user_token" : token]).responseObject{
             (response:DataResponse<DrawVO>) in
             switch response.result {
             case .success:
@@ -30,8 +70,8 @@ class MainModel : NetworkModel{
                 }
                 
                 if message.msg == "success"{
-                    if let data = message.data{
-                        self.view.networkResult(resultData: data, code: "1")
+                    if let result = message.result{
+                        self.view.networkResult(resultData: result, code: "result")
                     }
                 }
             case .failure(let err):

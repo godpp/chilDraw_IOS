@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 class LoginVO : Mappable {
-    var data : String?
+    var userInfo : UserInfoVO?
     var msg : String?
     
     required init?(map:Map){}
     
     func mapping(map: Map) {
-        data <- map["data"]
+        userInfo <- map["userInfo"]
         msg <- map["msg"]
     }
 }

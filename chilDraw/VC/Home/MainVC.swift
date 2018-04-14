@@ -8,174 +8,81 @@
 
 import Foundation
 import UIKit
-import AVFoundation
 
-class MainVC : UIViewController, AVAudioRecorderDelegate, NetworkCallback{
+class MainVC : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyCellDelegate, NetworkCallback{
     
-    func networkFailed() {
-        simpleAlert(title: "오류", msg: "통신오류")
-    }
+    @IBOutlet var categoryView: UICollectionView!
     
-    func networkResult(resultData: Any, code: String) {
-        
-    }
+    var choiceCategoryNum : Int?
+    let user_token = UserDefaults.standard.string(forKey: "token")
+    var wordArr : String?
+    var word_idArr : String?
     
-    
-    //Outlets
-    @IBOutlet weak var recordingTimeLabel: UILabel!
-    
-    //Variables
-    var audioRecorder: AVAudioRecorder!
-    var meterTimer:Timer!
-    var isAudioRecordingGranted: Bool!
-    var audioURL : URL!
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-        audioRecorder = nil
-    }
-    
-    //MARK:- Audio recorder buttons action.
-    @IBAction func audioRecorderAction(_ sender: UIButton) {
-        
-        if isAudioRecordingGranted {
-            
-            //Create the session.
-            let session = AVAudioSession.sharedInstance()
-            
-            do {
-                //Configure the session for recording and playback.
-                try session.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
-                try session.setActive(true)
-                //Set up a high-quality recording session.
-                let settings = [
-                    AVFormatIDKey: Int(kAudioFormatLinearPCM),
-                    AVSampleRateKey: 44100,
-                    AVNumberOfChannelsKey: 2,
-                    AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
-                ]
-                //Create audio file name URL
-                let audioFilename = getDocumentsDirectory().appendingPathComponent("voice.wav")
-                //Create the audio recording, and assign ourselves as the delegate
-                audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
-                audioRecorder.delegate = self
-                audioRecorder.isMeteringEnabled = true
-                audioRecorder.record()
-                meterTimer = Timer.scheduledTimer(timeInterval: 0.1, target:self, selector:#selector(self.updateAudioMeter(timer:)), userInfo:nil, repeats:true)
-                print(audioFilename)
-                audioURL =  try audioRecorder?.url
-            }
-            catch let error {
-                print("Error for start audio recording: \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    @IBAction func stopAudioRecordingAction(_ sender: UIButton) {
-        
-        finishAudioRecording(success: true)
-        
-    }
-    
-    func finishAudioRecording(success: Bool) {
-        
-        let model = MainModel(self)
-        
-        audioRecorder.stop()
-        audioRecorder = nil
-        meterTimer.invalidate()
-        
-        if success {
-            print("Recording finished successfully.")
-            //음성파일 보내기
-            if let theUrl = audioURL {
-                do {
-                    let audioData = try Data(contentsOf: theUrl as URL)
-                    model.recordModel(voice: audioData)
-                } catch {
-                    print("Unable to load data: \(error)")
-                }
-            }
-        } else {
-            print("Recording failed :(")
-        }
-    }
-    
-    @objc func updateAudioMeter(timer: Timer) {
-        
-        if audioRecorder.isRecording {
-            let hr = Int((audioRecorder.currentTime / 60) / 60)
-            let min = Int(audioRecorder.currentTime / 60)
-            let sec = Int(audioRecorder.currentTime.truncatingRemainder(dividingBy: 60))
-            let totalTimeString = String(format: "%02d:%02d:%02d", hr, min, sec)
-            recordingTimeLabel.text = totalTimeString
-            audioRecorder.updateMeters()
-        }
-    }
-    
-    func getDocumentsDirectory() -> URL {
-        
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let documentsDirectory = paths[0]
-        return documentsDirectory
-    }
-    
-    //MARK:- Audio recoder delegate methods
-    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        
-        if !flag {
-            finishAudioRecording(success: false)
-        }
+    var categoryList = ["main_button_fruits.png","main_button_animals.png","main_button_object.png","main_button_clothes.png","main_button_nature.png","main_button_figure.png"]
+
+    func categoryBtnPressed(cell: categoryCell) {
+        //Get the indexpath of cell where button was tapped
+        let indexPath = self.categoryView.indexPath(for: cell)
+        choiceCategoryNum = gino(indexPath?.row) //넘버 아직 옵셔널 해제안됌.
+        print(choiceCategoryNum)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        switch AVAudioSession.sharedInstance().recordPermission() {
-        case AVAudioSessionRecordPermission.granted:
-            isAudioRecordingGranted = true
-            break
-        case AVAudioSessionRecordPermission.denied:
-            isAudioRecordingGranted = false
-            break
-        case AVAudioSessionRecordPermission.undetermined:
-            AVAudioSession.sharedInstance().requestRecordPermission() { [unowned self] allowed in
-                DispatchQueue.main.async {
-                    if allowed {
-                        self.isAudioRecordingGranted = true
-                    } else {
-                        self.isAudioRecordingGranted = false
-                    }
-                }
-            }
-            break
-        default:
-            break
-        }
-        
-        
-        //그래프
-        
-        let x: CGFloat = 87
-        let y: CGFloat = 243
-        let width = self.view.frame.width
-        let height = self.view.frame.height
-        
-        let myData = [
-            ["Mon": 10],
-            ["Tues" : 20],
-            ["Weds" : 40],
-            ["Thurs" : 35],
-            ["Fri" : 100],
-            ["Sat" : 150],
-            ["Sun": 10]
-        ]
-        
-        
-        let graph = GraphView(frame: CGRect(x: x, y: y, width: width-x*2, height: height * 0.5), data: myData)
-        
-        self.view.addSubview(graph)
+        categoryView.tintColor = UIColor.clear
+        categoryView.backgroundColor = UIColor.clear
+
     }
+    
+    func networkResult(resultData: Any, code: String) {
+        if code == "success"{
+            
+            let data = resultData as? RandomMessageVO
+            print(data?.wordArr)
+            print(data?.word_idArr)
+            guard let drawviewVC = storyboard?.instantiateViewController(withIdentifier: "DrawViewVC") as? DrawViewVC else{
+                return
+            }
+            if data?.arrNum != nil{
+                
+                drawviewVC.arrNumData = gino(data?.arrNum)
+                drawviewVC.wordArr = data?.wordArr
+                drawviewVC.word_idArr = data?.word_idArr
+                drawviewVC.categoryNumData = gino(choiceCategoryNum)
+                drawviewVC.wordData = gsno(data?.word)
+                drawviewVC.room_idData = gino(data?.room_id)
+                self.present(drawviewVC, animated: true)
+            }
+            else{
+                simpleAlert(title: "네트워크 연결 오류", msg: "인터넷 연결을 확인하세요.")
+            }
+        }
+    }
+    
+    func networkFailed() {
+        simpleAlert(title: "네트워크 연결 오류", msg: "인터넷 연결을 확인하세요.")
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categoryList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = categoryView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! categoryCell
+        cell.categoryBtn.setImage(UIImage(named: gsno(categoryList[indexPath.row])), for: .normal)
+        cell.delegate = self
+        return cell
+    }
+    
+    @IBAction func startBtn(_ sender: Any) {
+        let model = MainModel(self)
+        model.categoryChoiceModel(category: gino(choiceCategoryNum), arrNum: -1, wordArr: gsno(wordArr), word_idArr: gsno(word_idArr), token: gsno(user_token))
+    }
+    
 }

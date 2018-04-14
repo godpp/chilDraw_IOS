@@ -15,7 +15,6 @@ class LoginModel : NetworkModel{
     func login(email: String, pwd: String) {
         
         let URL = "\(baseURL)/users/login"
-        let ud = UserDefaults.standard
         let body : [String:String] = [
             "email": email,
             "pwd": pwd
@@ -29,12 +28,10 @@ class LoginModel : NetworkModel{
                     self.view.networkFailed()
                     return
                 }
-                if Message.msg == "1" {
-                    if let token = Message.data{
-                        ud.setValue(token, forKey: "token")
-                        ud.synchronize()
+                if Message.msg == "success" {
+                    if let userInfo = Message.userInfo{
+                        self.view.networkResult(resultData: userInfo, code: "1")
                     }
-                    self.view.networkResult(resultData: "", code: "1")
                 }
                 else {
                     self.view.networkResult(resultData: "error", code: "2")
