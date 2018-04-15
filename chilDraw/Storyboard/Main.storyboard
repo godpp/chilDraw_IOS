@@ -128,21 +128,6 @@
             </objects>
             <point key="canvasLocation" x="-383.0935251798561" y="152.5179856115108"/>
         </scene>
-        <!--Main TabVC-->
-        <scene sceneID="ZM1-f6-Gru">
-            <objects>
-                <tabBarController storyboardIdentifier="MainTabVC" automaticallyAdjustsScrollViewInsets="NO" id="MKS-Et-8mR" customClass="MainTabVC" customModule="chilDraw" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Y4b-oS-7iI">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ed2-22-r3l" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-383" y="876"/>
-        </scene>
         <!--Draw ViewVC-->
         <scene sceneID="H4U-6q-hg3">
             <objects>
@@ -267,57 +252,6 @@
             </objects>
             <point key="canvasLocation" x="246.58273381294964" y="152.5179856115108"/>
         </scene>
-        <!--Setting MainVC-->
-        <scene sceneID="wak-h8-WaJ">
-            <objects>
-                <viewController storyboardIdentifier="SettingMainVC" id="cEb-kg-NSQ" customClass="SettingMainVC" customModule="chilDraw" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dKT-Y3-vyf">
-                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_background" translatesAutoresizingMaskIntoConstraints="NO" id="5aA-gv-pyp">
-                                <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="5aA-gv-pyp" secondAttribute="height" multiplier="4:3" id="odp-ad-u9p"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_logo_text" translatesAutoresizingMaskIntoConstraints="NO" id="fYY-Ia-hwX">
-                                <rect key="frame" x="394" y="40" width="321" height="104"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nr9-X1-rep">
-                                <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="70"/>
-                                <state key="normal" title="로그아웃">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="logoutBtn:" destination="cEb-kg-NSQ" eventType="touchUpInside" id="FMh-OW-rFr"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="3C7-83-viX" firstAttribute="trailing" secondItem="fYY-Ia-hwX" secondAttribute="trailing" constant="397" id="2Qm-nQ-ntP"/>
-                            <constraint firstItem="5aA-gv-pyp" firstAttribute="trailing" secondItem="3C7-83-viX" secondAttribute="trailing" id="5i0-Jn-q01"/>
-                            <constraint firstItem="nr9-X1-rep" firstAttribute="trailing" secondItem="3C7-83-viX" secondAttribute="trailing" id="BMW-qB-WsF"/>
-                            <constraint firstItem="5aA-gv-pyp" firstAttribute="top" secondItem="dKT-Y3-vyf" secondAttribute="top" id="CLY-JO-3r1"/>
-                            <constraint firstItem="nr9-X1-rep" firstAttribute="leading" secondItem="3C7-83-viX" secondAttribute="leading" id="T9X-66-tjI"/>
-                            <constraint firstItem="nr9-X1-rep" firstAttribute="top" secondItem="dKT-Y3-vyf" secondAttribute="top" id="cXb-hq-jaQ"/>
-                            <constraint firstItem="fYY-Ia-hwX" firstAttribute="top" secondItem="3C7-83-viX" secondAttribute="top" constant="20" id="gDR-Cb-8gi"/>
-                            <constraint firstItem="3C7-83-viX" firstAttribute="bottom" secondItem="fYY-Ia-hwX" secondAttribute="bottom" constant="690" id="i4Q-ux-oKK"/>
-                            <constraint firstItem="fYY-Ia-hwX" firstAttribute="leading" secondItem="3C7-83-viX" secondAttribute="leading" constant="394" id="l7I-Qe-lKw"/>
-                            <constraint firstAttribute="bottom" secondItem="nr9-X1-rep" secondAttribute="bottom" id="obW-fF-eZx"/>
-                            <constraint firstAttribute="bottom" secondItem="5aA-gv-pyp" secondAttribute="bottom" id="rZG-e6-ebl"/>
-                            <constraint firstItem="5aA-gv-pyp" firstAttribute="leading" secondItem="3C7-83-viX" secondAttribute="leading" id="tvN-PM-pkH"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="3C7-83-viX"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="main_home_button_setting_off" selectedImage="main_home_button_setting_on" id="SBu-HJ-pLb"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sLE-HZ-DL5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="459" y="1367"/>
-        </scene>
     </scenes>
     <resources>
         <image name="draw_helppage" width="1112" height="834"/>
@@ -326,16 +260,12 @@
         <image name="drawing_button_mic" width="84" height="84"/>
         <image name="drawing_button_x" width="140" height="121"/>
         <image name="drawing_icon_goodjob" width="397" height="380"/>
-        <image name="icon_logo_text" width="464" height="84"/>
         <image name="login_box" width="211" height="55"/>
-        <image name="main_background" width="1112" height="834"/>
         <image name="main_background-1" width="1112" height="834"/>
         <image name="main_button_fruits" width="292" height="388"/>
         <image name="main_button_help" width="58" height="92"/>
         <image name="main_button_mypage" width="125" height="136"/>
         <image name="main_button_start" width="449" height="114"/>
-        <image name="main_home_button_setting_off" width="265" height="70"/>
-        <image name="main_home_button_setting_on" width="265" height="70"/>
         <image name="main_home_yellowline" width="1016" height="5"/>
         <image name="main_tiltle" width="321" height="55"/>
     </resources>

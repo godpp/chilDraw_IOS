@@ -20,10 +20,10 @@ class MainVC : UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     
     var categoryList = ["main_button_fruits.png","main_button_animals.png","main_button_object.png","main_button_clothes.png","main_button_nature.png","main_button_figure.png"]
 
+    // 카테고리 클릭시 해당 값 호출
     func categoryBtnPressed(cell: categoryCell) {
-        //Get the indexpath of cell where button was tapped
         let indexPath = self.categoryView.indexPath(for: cell)
-        choiceCategoryNum = gino(indexPath?.row) //넘버 아직 옵셔널 해제안됌.
+        choiceCategoryNum = gino(indexPath?.row)
         print(choiceCategoryNum)
     }
     
