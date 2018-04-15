@@ -2,13 +2,13 @@
 
 신경망 학습을 이용한 유아 영어 교육 애플리케이션
 
+Blog : <https://godpp.github.io/2018/03/31/chilDraw-IOS-IPAD-App/>
+
 ## # 개요
 
 IT를 접목한 유아 영어 교육인 에듀테크, 재미와 반복학습의 특징을 가지고 있는 그림 그리기를 접목시켜, 
 아이들의 영어 발음을 인식하는 음성인식 (Deep Neural Network), 실시간으로 서버와 통신해 아이들의 그림 
 특징을 추출할 수 있는 이미지 인식 (Conveontional Neural Network)으로 구성된 영어 교육 애플리케이션
-
-Blog : <"https://godpp.github.io/2018/03/31/chilDraw-IOS-IPAD-App/">
 
 ## # 주요기능
 
@@ -93,4 +93,4 @@ Blog : <"https://godpp.github.io/2018/03/31/chilDraw-IOS-IPAD-App/">
 
 ## # 워크플로우
 
-<img src="image/chilDraw_워크플로우.jpg">
+<img src = "image/chilDraw_워크플로우.jpg">
