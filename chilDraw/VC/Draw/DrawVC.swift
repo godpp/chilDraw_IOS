@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Foundation
+
 
 class DrawVC: UIView, NetworkCallback {
     
     @IBOutlet var wordLabel : UILabel!
     @IBOutlet var goodJob_Img : UIImageView!
     @IBOutlet var exitBtn : UIButton!
+    @IBOutlet var wrong_Img : UIImageView!
     
     var delayInSeconds = 2.0
     var room_id:Int?
@@ -24,33 +27,54 @@ class DrawVC: UIView, NetworkCallback {
     
     let user_token = UserDefaults.standard.string(forKey: "token")
     
-    var drawViewVC : DrawViewVC?
-    
     var result : Bool?
     var data : RandomMessageVO?
+    
+    var TransferToServerTimer = Timer()
+    
+    
+    override func awakeFromNib() {
+        TransferToServerTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(autoTransferDrawingData), userInfo: nil, repeats: true)
+    }
+    @objc func stopAutoTimer(){
+        TransferToServerTimer.invalidate()
+        
+    }
+    
+    @objc func autoTransferDrawingData() {
+        drawingArray.append(drawX)
+        drawingArray.append(drawY)
+        if drawingArray.isEmpty == false{
+            print("호출!")
+            let model = MainModel(self)
+            model.drawModel(draw: "\(drawingArray)", word: word!, room_id: room_id!, token: user_token!)
+            print(drawingArray)
+        }
+        self.drawingArray.removeAll()
+    }
     
     func networkResult(resultData: Any, code: String) {
         print(code)
         if code == "result"{
             result = resultData as? Bool
             
-            if result!{
+            if result!{ // 정답
                 let model = MainModel(self)
-                print(category)
-                print(arrNum)
-                print(wordArr!)
-                print(user_token!)
                 model.categoryChoiceModel(category: category! , arrNum: arrNum!, wordArr:  wordArr!,word_idArr: word_idArr!, token: user_token!)
             }
-            else{
-                print("오답")
+            else{ // 오답
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds){
+                    self.erase()
+                    self.wrong_Img.isHidden = false
+                }
+                wrong_Img.isHidden = true
             }
         }
+        // 다음문제 소환
         else if code == "success"{
             data = resultData as? RandomMessageVO
             room_id = data?.room_id!
             word = data?.word!
-            print(word)
             arrNum = data?.arrNum!
             wordArr = data?.wordArr
             word_idArr = data?.word_idArr
@@ -58,25 +82,22 @@ class DrawVC: UIView, NetworkCallback {
             wordLabel.text! = word!
             goodJob_Img.isHidden = false
             erase()
-           
-            drawViewVC?.exitBtn(exitBtn)
+            
+            //정답 표시
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds){
                 self.goodJob_Img.isHidden = true
-                
-                
-                
             }
+            
         }
+        //카테고리 종료
         else if code == "finish"{
-            goodJob_Img.isHidden = false
             erase()
+            stopAutoTimer()
+            goodJob_Img.isHidden = false
             
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds){
-                self.goodJob_Img.isHidden = true
-                
-                
+                NotificationCenter.default.post(name: .finish, object: nil)
             }
-            
         }
         
     }
@@ -127,16 +148,6 @@ class DrawVC: UIView, NetworkCallback {
         let stroke = Stroke(startPoint: lastPoint, endPoint: currentPoint, color: strokeColor)
         strokes.append(stroke)
         lastPoint = nil
-        drawingArray.append(drawX)
-        drawingArray.append(drawY)
-        
-        let model = MainModel(self)
-        model.drawModel(draw: "\(drawingArray)", word: word!, room_id: room_id!, token: user_token!)
-        print("\(drawingArray)")
-        
-        
-        drawingArray.removeAll()
-        
         setNeedsDisplay()
         
     }

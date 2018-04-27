@@ -85,4 +85,16 @@ class MainVC : UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         model.categoryChoiceModel(category: gino(choiceCategoryNum), arrNum: -1, wordArr: gsno(wordArr), word_idArr: gsno(word_idArr), token: gsno(user_token))
     }
     
+    @IBAction func helppageButton(_ sender: Any) {
+        guard let helppageVC = storyboard?.instantiateViewController(withIdentifier : "HelpPageVC") as? HelpPageVC
+            else{return}
+        self.present(helppageVC, animated: true)
+        
+    }
+    @IBAction func mypageButton(_ sender: Any) {
+        guard let mypageVC = storyboard?.instantiateViewController(withIdentifier: "MypageVC") as? MypageVC
+            else {return}
+        self.present(mypageVC, animated: true)
+    }
+    
 }

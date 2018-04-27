@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import AVFoundation
 
+extension Notification.Name{
+    static let finish = Notification.Name("finish")
+}
+
 
 class DrawViewVC : UIViewController, AVAudioRecorderDelegate, NetworkCallback{
     
@@ -17,6 +21,7 @@ class DrawViewVC : UIViewController, AVAudioRecorderDelegate, NetworkCallback{
     @IBOutlet var drawView: DrawVC!
     @IBOutlet var helpPageImgView: UIImageView!
     @IBOutlet var wordLabel: UILabel!
+    @IBOutlet var clearImageView: UIImageView!
     
     var delayInSeconds = 2.0
     var recordingTime = 4.0
@@ -28,6 +33,14 @@ class DrawViewVC : UIViewController, AVAudioRecorderDelegate, NetworkCallback{
     var wordArr : String?
     var word_idArr : String?
     var room_idData : Int?
+    
+    // 카테고리 종료 Notification 알림
+    @objc func ParentDismiss(notification: NSNotification){
+        clearImageView.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds){
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     
     func simpleAlert1(title: String, msg: String) {
         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
@@ -170,6 +183,9 @@ class DrawViewVC : UIViewController, AVAudioRecorderDelegate, NetworkCallback{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 카테고리 종료 알림
+        NotificationCenter.default.addObserver(self, selector: #selector(ParentDismiss(notification:)), name: .finish, object: nil)
         
         //문제 단어 설정
         wordLabel.text = gsno(wordData)

@@ -16,6 +16,9 @@
 		4C08506E1FCD35BD007B6792 /* JoinVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08506D1FCD35BD007B6792 /* JoinVC1.swift */; };
 		4C0850701FCD36F5007B6792 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C08506F1FCD36F5007B6792 /* Main.storyboard */; };
 		4C0850751FCD3742007B6792 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0850741FCD3742007B6792 /* MainVC.swift */; };
+		4C0C97ED2092F9C100DB39F7 /* HelpPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C97EC2092F9C100DB39F7 /* HelpPageVC.swift */; };
+		4C0C97F02093013200DB39F7 /* MypageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C97EF2093013200DB39F7 /* MypageVC.swift */; };
+		4C0C97F220934EC200DB39F7 /* SettingPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C97F120934EC200DB39F7 /* SettingPageVC.swift */; };
 		4C615F421FDBBA5E002EAE01 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F411FDBBA5E002EAE01 /* SplashVC.swift */; };
 		4C615F461FDC429D002EAE01 /* DrawViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F451FDC429D002EAE01 /* DrawViewVC.swift */; };
 		4C615F481FDC430A002EAE01 /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F471FDC430A002EAE01 /* Stroke.swift */; };
@@ -60,6 +63,9 @@
 		4C08506D1FCD35BD007B6792 /* JoinVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVC1.swift; sourceTree = "<group>"; };
 		4C08506F1FCD36F5007B6792 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4C0850741FCD3742007B6792 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		4C0C97EC2092F9C100DB39F7 /* HelpPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPageVC.swift; sourceTree = "<group>"; };
+		4C0C97EF2093013200DB39F7 /* MypageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageVC.swift; sourceTree = "<group>"; };
+		4C0C97F120934EC200DB39F7 /* SettingPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPageVC.swift; sourceTree = "<group>"; };
 		4C615F411FDBBA5E002EAE01 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		4C615F451FDC429D002EAE01 /* DrawViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawViewVC.swift; sourceTree = "<group>"; };
 		4C615F471FDC430A002EAE01 /* Stroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
@@ -135,6 +141,7 @@
 				4C08506A1FCD3564007B6792 /* VO */,
 				4C0850691FCD355A007B6792 /* Model */,
 				4C0850681FCD354E007B6792 /* VC */,
+				4C0C97EE2093011E00DB39F7 /* Mypage */,
 				4C08505A1FCD34DD007B6792 /* chilDraw.xcdatamodeld */,
 			);
 			path = chilDraw;
@@ -199,6 +206,7 @@
 			children = (
 				4C0850741FCD3742007B6792 /* MainVC.swift */,
 				4CCFE4482073C96C0093E6F1 /* categoryCell.swift */,
+				4C0C97EC2092F9C100DB39F7 /* HelpPageVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -211,6 +219,15 @@
 				4C615F471FDC430A002EAE01 /* Stroke.swift */,
 			);
 			path = Draw;
+			sourceTree = "<group>";
+		};
+		4C0C97EE2093011E00DB39F7 /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+				4C0C97EF2093013200DB39F7 /* MypageVC.swift */,
+				4C0C97F120934EC200DB39F7 /* SettingPageVC.swift */,
+			);
+			path = Mypage;
 			sourceTree = "<group>";
 		};
 		4CB36F0B201EFA4C0003ED35 /* chilDrawTests */ = {
@@ -418,8 +435,10 @@
 			files = (
 				4CD720111FDDBA140092F061 /* LoginModel.swift in Sources */,
 				4C08506E1FCD35BD007B6792 /* JoinVC1.swift in Sources */,
+				4C0C97ED2092F9C100DB39F7 /* HelpPageVC.swift in Sources */,
 				4CCFE44B2075329A0093E6F1 /* RandomWordVO.swift in Sources */,
 				4C0850751FCD3742007B6792 /* MainVC.swift in Sources */,
+				4C0C97F02093013200DB39F7 /* MypageVC.swift in Sources */,
 				4C08505C1FCD34DD007B6792 /* chilDraw.xcdatamodeld in Sources */,
 				4CB6A3061FDD9E2E0028B889 /* NetworkCallback.swift in Sources */,
 				4CCFE44F2075FCBC0093E6F1 /* UserInfoVO.swift in Sources */,
@@ -434,6 +453,7 @@
 				4C615F481FDC430A002EAE01 /* Stroke.swift in Sources */,
 				4CB6A3081FDDA0110028B889 /* JoinModel.swift in Sources */,
 				4CD720131FDDBAA80092F061 /* LoginVO.swift in Sources */,
+				4C0C97F220934EC200DB39F7 /* SettingPageVC.swift in Sources */,
 				4C615F421FDBBA5E002EAE01 /* SplashVC.swift in Sources */,
 				4CB6A3031FDD9DE90028B889 /* NetworkModel.swift in Sources */,
 				4CCFE4492073C96C0093E6F1 /* categoryCell.swift in Sources */,
@@ -588,7 +608,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 86PPC52X64;
 				INFOPLIST_FILE = chilDraw/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.godp.chilDraw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -610,7 +630,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 86PPC52X64;
 				INFOPLIST_FILE = chilDraw/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.godp.chilDraw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
