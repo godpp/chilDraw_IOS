@@ -12,6 +12,7 @@ import AVFoundation
 
 extension Notification.Name{
     static let finish = Notification.Name("finish")
+    static let refreshFileName = Notification.Name("refreshFileName")
 }
 
 
@@ -26,19 +27,37 @@ class DrawViewVC : UIViewController, AVAudioRecorderDelegate, NetworkCallback{
     var delayInSeconds = 2.0
     var recordingTime = 4.0
 
-    
+    let user_token = UserDefaults.standard.string(forKey: "token")
     var wordData : String?
     var categoryNumData : Int?
     var arrNumData : Int?
     var wordArr : String?
     var word_idArr : String?
     var room_idData : Int?
+    var word_idData : Int?
+    
+    var audioNum : Int = 1
     
     // 카테고리 종료 Notification 알림
     @objc func ParentDismiss(notification: NSNotification){
         clearImageView.isHidden = false
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds){
             self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    // 오디오 파일 이름 Notification 변경 알림
+    @objc func audioFileNameRefresh(_ notification: Notification){
+        if let audioDict = notification.object as? [String: Any]{
+            if let word_id = audioDict["word_id"] as? Int{
+                word_idData = word_id
+            }
+            if let word = audioDict["word"] as? String{
+                wordData = word
+            }
+            if let audioN = audioDict["audioNum"] as? Int{
+                audioNum = audioN
+            }
         }
     }
     
@@ -112,7 +131,7 @@ class DrawViewVC : UIViewController, AVAudioRecorderDelegate, NetworkCallback{
                     AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
                 ]
                 //Create audio file name URL
-                let audioFilename = getDocumentsDirectory().appendingPathComponent("voice.wav")
+                let audioFilename = getDocumentsDirectory().appendingPathComponent(gsno(wordData)+"_"+gsno("\(gino(word_idData))")+"_"+gsno("\(gino(audioNum))")+".wav")
 
                 audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
                 audioRecorder.delegate = self
@@ -143,7 +162,9 @@ class DrawViewVC : UIViewController, AVAudioRecorderDelegate, NetworkCallback{
             if let theUrl = audioURL {
                 do {
                     let audioData = try Data(contentsOf: theUrl as URL)
-                    model.recordModel(voice: audioData)
+                    let audioName = gsno(wordData)+"_"+gsno("\(gino(word_idData))")+"_"+gsno("\(gino(audioNum))")+".wav"
+                    print(audioName)
+                    model.recordModel(voice: audioData, token: gsno(user_token), fileName: audioName, word_id: gino(word_idData))
                 } catch {
                     print("Unable to load data: \(error)")
                 }
@@ -159,8 +180,6 @@ class DrawViewVC : UIViewController, AVAudioRecorderDelegate, NetworkCallback{
             let hr = Int((audioRecorder.currentTime / 60) / 60)
             let min = Int(audioRecorder.currentTime / 60)
             let sec = Int(audioRecorder.currentTime.truncatingRemainder(dividingBy: 60))
-            let totalTimeString = String(format: "%02d:%02d:%02d", hr, min, sec)
-            //recordingTimeLabel.text = totalTimeString
             audioRecorder.updateMeters()
         }
     }
@@ -186,6 +205,9 @@ class DrawViewVC : UIViewController, AVAudioRecorderDelegate, NetworkCallback{
         
         // 카테고리 종료 알림
         NotificationCenter.default.addObserver(self, selector: #selector(ParentDismiss(notification:)), name: .finish, object: nil)
+        
+        // 음성파일명 변경 알림
+        NotificationCenter.default.addObserver(self, selector: #selector(audioFileNameRefresh(_:)), name: .refreshFileName, object: nil)
         
         //문제 단어 설정
         wordLabel.text = gsno(wordData)

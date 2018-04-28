@@ -81,14 +81,17 @@ class MainModel : NetworkModel{
         }
     }
     
-    func recordModel(voice: Data?) {
-        let URL : String = "\(baseURL)/test"
+    func recordModel(voice: Data?, token: String, fileName: String, word_id: Int) {
+        let URL : String = "\(baseURL)/game/voice"
+        
+        let word_id = "\(word_id)".data(using: .utf8)
         
         Alamofire.upload(
             multipartFormData: { multipartFormData in
-                multipartFormData.append(voice!, withName: "voice", fileName: "voice.wav", mimeType: "audio/wav")
+                multipartFormData.append(voice!, withName: "voice", fileName: fileName, mimeType: "audio/wav")
+                multipartFormData.append(word_id!, withName: "word_id")
         },
-            to: URL,
+            to: URL, method: .post, headers: ["Authorization": token],
             encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .success(let upload, _, _):

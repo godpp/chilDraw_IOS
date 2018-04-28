@@ -24,6 +24,8 @@ class DrawVC: UIView, NetworkCallback {
     var arrNum:Int?
     var wordArr: String?
     var word_idArr : String?
+    var word_idData: Int?
+    var audioNum : Int = 1
     
     let user_token = UserDefaults.standard.string(forKey: "token")
     
@@ -44,18 +46,17 @@ class DrawVC: UIView, NetworkCallback {
     @objc func autoTransferDrawingData() {
         drawingArray.append(drawX)
         drawingArray.append(drawY)
-        if drawingArray.isEmpty == false{
-            print("호출!")
+        
+        if drawX.isEmpty == false{
             let model = MainModel(self)
             model.drawModel(draw: "\(drawingArray)", word: word!, room_id: room_id!, token: user_token!)
-            print(drawingArray)
         }
         self.drawingArray.removeAll()
     }
     
     func networkResult(resultData: Any, code: String) {
         print(code)
-        if code == "result"{
+        if code == "result" {
             result = resultData as? Bool
             
             if result!{ // 정답
@@ -63,11 +64,11 @@ class DrawVC: UIView, NetworkCallback {
                 model.categoryChoiceModel(category: category! , arrNum: arrNum!, wordArr:  wordArr!,word_idArr: word_idArr!, token: user_token!)
             }
             else{ // 오답
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds){
-                    self.erase()
-                    self.wrong_Img.isHidden = false
+                self.wrong_Img.isHidden = false
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0){
+                    self.wrong_Img.isHidden = true
                 }
-                wrong_Img.isHidden = true
             }
         }
         // 다음문제 소환
@@ -76,12 +77,20 @@ class DrawVC: UIView, NetworkCallback {
             room_id = data?.room_id!
             word = data?.word!
             arrNum = data?.arrNum!
-            wordArr = data?.wordArr
-            word_idArr = data?.word_idArr
+            wordArr = data?.wordArr!
+            word_idArr = data?.word_idArr!
+            word_idData = data?.word_id!
+            audioNum += 1
+            
+            let audioDict = [ "word": word!, "word_id" : word_idData!,"audioNum": audioNum] as [String : Any]
+            
+            // 음성파일명 변경을 위한, word, word_id, audioNum 노티 전송
+            NotificationCenter.default.post(name: .refreshFileName , object: audioDict)
             
             wordLabel.text! = word!
             goodJob_Img.isHidden = false
             erase()
+
             
             //정답 표시
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds){

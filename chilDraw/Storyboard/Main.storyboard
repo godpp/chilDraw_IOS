@@ -421,22 +421,22 @@
                                         </constraints>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drawing_icon_retry" translatesAutoresizingMaskIntoConstraints="NO" id="OQt-2p-RS2">
-                                        <rect key="frame" x="262.5" y="95" width="491" height="390"/>
+                                        <rect key="frame" x="555" y="189" width="461" height="390"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="OQt-2p-RS2" secondAttribute="height" multiplier="434:345" id="c6Y-49-9ok"/>
+                                            <constraint firstAttribute="width" secondItem="OQt-2p-RS2" secondAttribute="height" multiplier="461:390" id="jfq-O9-v8H"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="OQt-2p-RS2" firstAttribute="centerY" secondItem="1wm-dw-WJx" secondAttribute="centerY" id="8iE-2E-2wr"/>
                                     <constraint firstItem="0xn-7O-84v" firstAttribute="leading" secondItem="1wm-dw-WJx" secondAttribute="leading" id="9HB-DK-yPW"/>
                                     <constraint firstItem="7a1-tX-xEa" firstAttribute="centerY" secondItem="1wm-dw-WJx" secondAttribute="centerY" id="Dkq-hi-drG"/>
                                     <constraint firstItem="5fe-nq-duR" firstAttribute="top" secondItem="0xn-7O-84v" secondAttribute="bottom" id="Jyt-ln-pEf"/>
+                                    <constraint firstAttribute="trailing" secondItem="OQt-2p-RS2" secondAttribute="trailing" id="RGP-25-20c"/>
                                     <constraint firstItem="5fe-nq-duR" firstAttribute="centerX" secondItem="0xn-7O-84v" secondAttribute="centerX" id="W3Q-mm-cMl"/>
                                     <constraint firstAttribute="trailing" secondItem="0xn-7O-84v" secondAttribute="trailing" id="k76-Mv-73J"/>
                                     <constraint firstItem="0xn-7O-84v" firstAttribute="top" secondItem="1wm-dw-WJx" secondAttribute="top" id="x28-gG-Xn2"/>
-                                    <constraint firstItem="OQt-2p-RS2" firstAttribute="centerX" secondItem="1wm-dw-WJx" secondAttribute="centerX" id="xCW-lt-Hw6"/>
+                                    <constraint firstAttribute="bottom" secondItem="OQt-2p-RS2" secondAttribute="bottom" id="ySW-iO-R8i"/>
                                     <constraint firstItem="7a1-tX-xEa" firstAttribute="centerX" secondItem="1wm-dw-WJx" secondAttribute="centerX" id="yYM-qP-9KH"/>
                                 </constraints>
                                 <connections>

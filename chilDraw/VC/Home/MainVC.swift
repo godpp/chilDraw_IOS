@@ -19,11 +19,13 @@ class MainVC : UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     var word_idArr : String?
     
     var categoryList = ["main_button_fruits.png","main_button_animals.png","main_button_object.png","main_button_clothes.png","main_button_nature.png","main_button_figure.png"]
+    var pressButtonImageList = ["main_button_fruits_click.png","main_button_animals_click.png","main_button_object_click.png","main_button_clothes_click.png","main_button_nature_click.png","main_button_figure_click.png"]
 
     // 카테고리 클릭시 해당 값 호출
     func categoryBtnPressed(cell: categoryCell) {
         let indexPath = self.categoryView.indexPath(for: cell)
         choiceCategoryNum = gino(indexPath?.row)
+        cell.categoryBtn.setImage(UIImage(named: gsno(pressButtonImageList[(indexPath?.row)!])), for: .selected)
         print(choiceCategoryNum)
     }
     
@@ -36,16 +38,16 @@ class MainVC : UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func networkResult(resultData: Any, code: String) {
+        
+        // 그림 그리기 시작!
         if code == "success"{
-            
             let data = resultData as? RandomMessageVO
-            print(data?.wordArr)
-            print(data?.word_idArr)
             guard let drawviewVC = storyboard?.instantiateViewController(withIdentifier: "DrawViewVC") as? DrawViewVC else{
                 return
             }
             if data?.arrNum != nil{
                 
+                drawviewVC.word_idData = gino(data?.word_id)
                 drawviewVC.arrNumData = gino(data?.arrNum)
                 drawviewVC.wordArr = data?.wordArr
                 drawviewVC.word_idArr = data?.word_idArr
