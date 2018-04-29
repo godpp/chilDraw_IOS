@@ -19,6 +19,10 @@
 		4C0C97ED2092F9C100DB39F7 /* HelpPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C97EC2092F9C100DB39F7 /* HelpPageVC.swift */; };
 		4C0C97F02093013200DB39F7 /* MypageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C97EF2093013200DB39F7 /* MypageVC.swift */; };
 		4C0C97F220934EC200DB39F7 /* SettingPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C97F120934EC200DB39F7 /* SettingPageVC.swift */; };
+		4C0C97F42095EF9600DB39F7 /* drawnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C97F32095EF9600DB39F7 /* drawnCell.swift */; };
+		4C0C97F62095F74800DB39F7 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C97F52095F74800DB39F7 /* SettingModel.swift */; };
+		4C0C97F82095F7DC00DB39F7 /* DrawnResultVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C97F72095F7DC00DB39F7 /* DrawnResultVO.swift */; };
+		4C0C97FA2095F86500DB39F7 /* DrawnMessageVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C97F92095F86500DB39F7 /* DrawnMessageVO.swift */; };
 		4C615F421FDBBA5E002EAE01 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F411FDBBA5E002EAE01 /* SplashVC.swift */; };
 		4C615F461FDC429D002EAE01 /* DrawViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F451FDC429D002EAE01 /* DrawViewVC.swift */; };
 		4C615F481FDC430A002EAE01 /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C615F471FDC430A002EAE01 /* Stroke.swift */; };
@@ -66,6 +70,10 @@
 		4C0C97EC2092F9C100DB39F7 /* HelpPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPageVC.swift; sourceTree = "<group>"; };
 		4C0C97EF2093013200DB39F7 /* MypageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageVC.swift; sourceTree = "<group>"; };
 		4C0C97F120934EC200DB39F7 /* SettingPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPageVC.swift; sourceTree = "<group>"; };
+		4C0C97F32095EF9600DB39F7 /* drawnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drawnCell.swift; sourceTree = "<group>"; };
+		4C0C97F52095F74800DB39F7 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
+		4C0C97F72095F7DC00DB39F7 /* DrawnResultVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawnResultVO.swift; sourceTree = "<group>"; };
+		4C0C97F92095F86500DB39F7 /* DrawnMessageVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawnMessageVO.swift; sourceTree = "<group>"; };
 		4C615F411FDBBA5E002EAE01 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		4C615F451FDC429D002EAE01 /* DrawViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawViewVC.swift; sourceTree = "<group>"; };
 		4C615F471FDC430A002EAE01 /* Stroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
@@ -141,7 +149,6 @@
 				4C08506A1FCD3564007B6792 /* VO */,
 				4C0850691FCD355A007B6792 /* Model */,
 				4C0850681FCD354E007B6792 /* VC */,
-				4C0C97EE2093011E00DB39F7 /* Mypage */,
 				4C08505A1FCD34DD007B6792 /* chilDraw.xcdatamodeld */,
 			);
 			path = chilDraw;
@@ -153,6 +160,7 @@
 				4C0850731FCD3739007B6792 /* Home */,
 				4C0850761FCD49F6007B6792 /* Draw */,
 				4C0850721FCD372B007B6792 /* Login */,
+				4C0C97EE2093011E00DB39F7 /* Mypage */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -164,6 +172,7 @@
 				4CB6A3071FDDA0110028B889 /* JoinModel.swift */,
 				4CD720101FDDBA140092F061 /* LoginModel.swift */,
 				4CB36F162024430B0003ED35 /* MainModel.swift */,
+				4C0C97F52095F74800DB39F7 /* SettingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,6 +186,8 @@
 				4CB36F18202714F70003ED35 /* DrawVO.swift */,
 				4CCFE44A2075329A0093E6F1 /* RandomWordVO.swift */,
 				4CCFE44C207532DA0093E6F1 /* RandomMessageVO.swift */,
+				4C0C97F72095F7DC00DB39F7 /* DrawnResultVO.swift */,
+				4C0C97F92095F86500DB39F7 /* DrawnMessageVO.swift */,
 			);
 			path = VO;
 			sourceTree = "<group>";
@@ -226,6 +237,7 @@
 			children = (
 				4C0C97EF2093013200DB39F7 /* MypageVC.swift */,
 				4C0C97F120934EC200DB39F7 /* SettingPageVC.swift */,
+				4C0C97F32095EF9600DB39F7 /* drawnCell.swift */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -445,16 +457,20 @@
 				4C615F461FDC429D002EAE01 /* DrawViewVC.swift in Sources */,
 				4CB36F19202714F70003ED35 /* DrawVO.swift in Sources */,
 				4C6250A0206F568D002A7CC1 /* JoinVC2.swift in Sources */,
+				4C0C97F62095F74800DB39F7 /* SettingModel.swift in Sources */,
 				4CCFE44D207532DA0093E6F1 /* RandomMessageVO.swift in Sources */,
 				4C0850541FCD34DD007B6792 /* AppDelegate.swift in Sources */,
 				4CB6A30D1FDDA7E60028B889 /* Extension.swift in Sources */,
 				4CB36F172024430B0003ED35 /* MainModel.swift in Sources */,
 				4C08506C1FCD3579007B6792 /* LoginVC.swift in Sources */,
 				4C615F481FDC430A002EAE01 /* Stroke.swift in Sources */,
+				4C0C97FA2095F86500DB39F7 /* DrawnMessageVO.swift in Sources */,
 				4CB6A3081FDDA0110028B889 /* JoinModel.swift in Sources */,
+				4C0C97F82095F7DC00DB39F7 /* DrawnResultVO.swift in Sources */,
 				4CD720131FDDBAA80092F061 /* LoginVO.swift in Sources */,
 				4C0C97F220934EC200DB39F7 /* SettingPageVC.swift in Sources */,
 				4C615F421FDBBA5E002EAE01 /* SplashVC.swift in Sources */,
+				4C0C97F42095EF9600DB39F7 /* drawnCell.swift in Sources */,
 				4CB6A3031FDD9DE90028B889 /* NetworkModel.swift in Sources */,
 				4CCFE4492073C96C0093E6F1 /* categoryCell.swift in Sources */,
 				4C615F571FDC482E002EAE01 /* DrawVC.swift in Sources */,

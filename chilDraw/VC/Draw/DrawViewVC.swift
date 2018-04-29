@@ -13,6 +13,7 @@ import AVFoundation
 extension Notification.Name{
     static let finish = Notification.Name("finish")
     static let refreshFileName = Notification.Name("refreshFileName")
+    static let clearNoti = Notification.Name("clearNoti")
 }
 
 
@@ -85,7 +86,9 @@ class DrawViewVC : UIViewController, AVAudioRecorderDelegate, NetworkCallback{
     }
     
     @IBAction func exitBtn(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            NotificationCenter.default.post(name: .clearNoti, object: nil)
+        }
     }
     @IBAction func onEraseTapped(_ sender: Any) {
         drawView.erase()

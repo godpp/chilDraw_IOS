@@ -37,6 +37,7 @@ class DrawVC: UIView, NetworkCallback {
     
     override func awakeFromNib() {
         TransferToServerTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(autoTransferDrawingData), userInfo: nil, repeats: true)
+        NotificationCenter.default.addObserver(self, selector: #selector(stopAutoTimer), name: .clearNoti, object: nil)
     }
     @objc func stopAutoTimer(){
         TransferToServerTimer.invalidate()

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14111" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o8M-Ch-zAr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14111" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nhU-bd-He6">
     <device id="ipad10_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -134,25 +134,44 @@
                                     <constraint firstAttribute="width" secondItem="6Vi-Xw-HS8" secondAttribute="height" multiplier="1:1" id="hb6-Pl-tHh"/>
                                 </constraints>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4f6-NF-SNE">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4f6-NF-SNE">
                                 <rect key="frame" x="0.0" y="395" width="1112" height="312"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="4f6-NF-SNE" secondAttribute="height" multiplier="139:39" id="zqO-37-LuC"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WBi-fG-QgN">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20.989999999999998" minimumInteritemSpacing="20.989999999999998" id="WBi-fG-QgN">
                                     <size key="itemSize" width="221" height="136"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="82" minY="0.0" maxX="82" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="g6V-jk-yaP">
-                                        <rect key="frame" x="0.0" y="0.0" width="221" height="136"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="drawnCell" reuseIdentifier="drawnCell" id="g6V-jk-yaP" customClass="drawnCell" customModule="chilDraw" customModuleProvider="target">
+                                        <rect key="frame" x="82" y="0.0" width="221" height="136"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="221" height="136"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jpy-xy-J5V">
+                                                    <rect key="frame" x="0.0" y="0.0" width="221" height="136"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Jpy-xy-J5V" secondAttribute="height" multiplier="13:8" id="iFc-ya-kjg"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="Jpy-xy-J5V" firstAttribute="centerY" secondItem="g6V-jk-yaP" secondAttribute="centerY" id="KGz-Qx-mx0"/>
+                                            <constraint firstAttribute="bottom" secondItem="Jpy-xy-J5V" secondAttribute="bottom" id="VqO-D7-MSI"/>
+                                            <constraint firstItem="Jpy-xy-J5V" firstAttribute="leading" secondItem="g6V-jk-yaP" secondAttribute="leading" id="XDp-Rv-V72"/>
+                                            <constraint firstItem="Jpy-xy-J5V" firstAttribute="top" secondItem="g6V-jk-yaP" secondAttribute="top" id="YLA-4g-TRK"/>
+                                            <constraint firstItem="Jpy-xy-J5V" firstAttribute="centerX" secondItem="g6V-jk-yaP" secondAttribute="centerX" id="dx0-Tr-4oD"/>
+                                            <constraint firstAttribute="trailing" secondItem="Jpy-xy-J5V" secondAttribute="trailing" id="nRr-LX-ulI"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="drawnImageView" destination="Jpy-xy-J5V" id="2sh-36-07U"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -212,6 +231,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jer-5e-OYF"/>
                     </view>
+                    <connections>
+                        <outlet property="drawnCollectionView" destination="4f6-NF-SNE" id="Cw5-fS-HSc"/>
+                        <outlet property="nicknameLabel" destination="sL4-8y-xRn" id="kpi-aT-S1r"/>
+                        <outlet property="profileImageView" destination="6Vi-Xw-HS8" id="mgH-kc-T8o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBq-Uw-98Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -264,7 +288,7 @@
                                     <action selector="startBtn:" destination="o8M-Ch-zAr" eventType="touchUpInside" id="Wbi-et-vBx"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="guk-nC-0p9">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="guk-nC-0p9">
                                 <rect key="frame" x="0.0" y="230" width="1112" height="373"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="guk-nC-0p9" secondAttribute="height" multiplier="1112:373" id="1eQ-t0-FXR"/>
@@ -273,7 +297,7 @@
                                     <size key="itemSize" width="292" height="373"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="52" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="52" minY="0.0" maxX="52" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="categoryCell" reuseIdentifier="categoryCell" id="2Xw-g5-ma5" customClass="categoryCell" customModule="chilDraw" customModuleProvider="target">
@@ -331,13 +355,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D0a-OF-2w0"/>
                     </view>
+                    <navigationItem key="navigationItem" id="PPM-9D-OuK"/>
                     <connections>
                         <outlet property="categoryView" destination="guk-nC-0p9" id="pqG-A5-sOm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HIl-GH-lqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-383.0935251798561" y="152.5179856115108"/>
+            <point key="canvasLocation" x="-383" y="153"/>
         </scene>
         <!--Help PageVC-->
         <scene sceneID="c6D-2J-mcw">
@@ -532,7 +557,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D1H-cs-3Ku" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="246.58273381294964" y="152.5179856115108"/>
+            <point key="canvasLocation" x="247" y="153"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wB2-O8-wgs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="nhU-bd-He6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4bV-T8-cnD">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="o8M-Ch-zAr" kind="relationship" relationship="rootViewController" id="8WE-7a-ce6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hua-RB-e4O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1123" y="153"/>
         </scene>
     </scenes>
     <resources>

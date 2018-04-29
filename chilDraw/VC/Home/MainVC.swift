@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MainVC : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyCellDelegate, NetworkCallback{
+class MainVC : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,MyCellDelegate, NetworkCallback{
     
     @IBOutlet var categoryView: UICollectionView!
     
@@ -18,14 +18,32 @@ class MainVC : UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     var wordArr : String?
     var word_idArr : String?
     
-    var categoryList = ["main_button_fruits.png","main_button_animals.png","main_button_object.png","main_button_clothes.png","main_button_nature.png","main_button_figure.png"]
-    var pressButtonImageList = ["main_button_fruits_click.png","main_button_animals_click.png","main_button_object_click.png","main_button_clothes_click.png","main_button_nature_click.png","main_button_figure_click.png"]
+    var categoryList = [
+        "main_button_fruits.png",
+        "main_button_animals.png",
+        "main_button_object.png",
+        "main_button_clothes.png",
+        "main_button_nature.png",
+        "main_button_figure.png"
+    ]
+    var pressButtonImageList = [
+        "main_button_fruits_click.png",
+        "main_button_animals_click.png",
+        "main_button_object_click.png",
+        "main_button_clothes_click.png",
+        "main_button_nature_click.png",
+        "main_button_figure_click.png"
+    ]
 
     // 카테고리 클릭시 해당 값 호출
     func categoryBtnPressed(cell: categoryCell) {
         let indexPath = self.categoryView.indexPath(for: cell)
         choiceCategoryNum = gino(indexPath?.row)
-        cell.categoryBtn.setImage(UIImage(named: gsno(pressButtonImageList[(indexPath?.row)!])), for: .selected)
+        cell.categoryBtn.setImage(
+            UIImage(
+            named: gsno(pressButtonImageList[(indexPath?.row)!])),
+            for: .selected
+        )
         print(choiceCategoryNum)
     }
     
@@ -42,9 +60,10 @@ class MainVC : UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         // 그림 그리기 시작!
         if code == "success"{
             let data = resultData as? RandomMessageVO
-            guard let drawviewVC = storyboard?.instantiateViewController(withIdentifier: "DrawViewVC") as? DrawViewVC else{
-                return
-            }
+            guard let drawviewVC = storyboard?.instantiateViewController(
+                withIdentifier: "DrawViewVC"
+                ) as? DrawViewVC
+                else{return}
             if data?.arrNum != nil{
                 
                 drawviewVC.word_idData = gino(data?.word_id)
@@ -70,13 +89,22 @@ class MainVC : UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+        ) -> Int {
         return categoryList.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+        ) -> UICollectionViewCell {
         
-        let cell = categoryView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! categoryCell
+        let cell = categoryView.dequeueReusableCell(
+            withReuseIdentifier: "categoryCell",
+            for: indexPath
+            ) as! categoryCell
         cell.categoryBtn.setImage(UIImage(named: gsno(categoryList[indexPath.row])), for: .normal)
         cell.delegate = self
         return cell
@@ -84,17 +112,27 @@ class MainVC : UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     
     @IBAction func startBtn(_ sender: Any) {
         let model = MainModel(self)
-        model.categoryChoiceModel(category: gino(choiceCategoryNum), arrNum: -1, wordArr: gsno(wordArr), word_idArr: gsno(word_idArr), token: gsno(user_token))
+        model.categoryChoiceModel(
+            category: gino(choiceCategoryNum),
+            arrNum: -1,
+            wordArr: gsno(wordArr),
+            word_idArr: gsno(word_idArr),
+            token: gsno(user_token)
+        )
     }
     
     @IBAction func helppageButton(_ sender: Any) {
-        guard let helppageVC = storyboard?.instantiateViewController(withIdentifier : "HelpPageVC") as? HelpPageVC
+        guard let helppageVC = storyboard?.instantiateViewController(
+            withIdentifier : "HelpPageVC"
+            ) as? HelpPageVC
             else{return}
         self.present(helppageVC, animated: true)
         
     }
     @IBAction func mypageButton(_ sender: Any) {
-        guard let mypageVC = storyboard?.instantiateViewController(withIdentifier: "MypageVC") as? MypageVC
+        guard let mypageVC = storyboard?.instantiateViewController(
+            withIdentifier: "MypageVC"
+            ) as? MypageVC
             else {return}
         self.present(mypageVC, animated: true)
     }
