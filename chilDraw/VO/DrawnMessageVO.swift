@@ -10,9 +10,9 @@ import Foundation
 import ObjectMapper
 
 class DrawnMessageVO: Mappable{
-    var stat: Bool?
+    var stat: String?
     var msg: String?
-    var result: [DrawnResultVO]?
+    var result: SettingResultVO?
     
     required init?(map: Map) {}
     

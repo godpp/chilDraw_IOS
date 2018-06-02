@@ -21,4 +21,19 @@ class categoryCell : UICollectionViewCell{
     }
     
     @IBOutlet var categoryBtn: UIButton!
+    
+    override var isSelected: Bool{
+        didSet{
+            if self.isSelected
+            {
+                super.isSelected = true
+                self.categoryBtn.backgroundImage(for: .selected)
+            }
+            else
+            {
+                super.isSelected = false
+                self.categoryBtn.backgroundImage(for: .normal)
+            }
+        }
+    }
 }

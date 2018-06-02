@@ -60,7 +60,13 @@ class JoinVC2 : UIViewController, NetworkCallback, UIGestureRecognizerDelegate, 
     
     @IBAction func signupBtn(_ sender: Any) {
         let model = JoinModel(self)
-        model.createMember(email: gsno(emailData), pwd: gsno(pwdData), gender: gender, nickname: gsno(usernameData), age: gino(age))
+        model.createMember(
+            email: gsno(emailData),
+            pwd: gsno(pwdData),
+            gender: gender,
+            nickname: gsno(usernameData),
+            age: gino(age)
+        )
     }
     
     
@@ -114,12 +120,19 @@ class JoinVC2 : UIViewController, NetworkCallback, UIGestureRecognizerDelegate, 
     }
     
     //각 행에 대해 제목 설정
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(
+        _ pickerView: UIPickerView,
+        titleForRow row: Int,
+        forComponent component: Int
+        ) -> String? {
         return ageArray[row]
     }
     
     //행이 선택 될 때 텍스트 필드에 텍스트를 업데이트
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(
+        _ pickerView: UIPickerView,
+        didSelectRow row: Int,
+        inComponent component: Int) {
         ageLabel.text = ageArray[row] + " 세"
         age = gino(Int(ageArray[row]))
         isValid()
@@ -129,16 +142,14 @@ class JoinVC2 : UIViewController, NetworkCallback, UIGestureRecognizerDelegate, 
         self.dismiss(animated: true, completion: nil)
     }
     func networkResult(resultData: Any, code: String) {
-        print(emailData)
-        print(usernameData)
-        print(pwdData)
-        print(gender)
-        print(age)
         if code == "1"{
             let msg = resultData as? String
             print(gsno(msg))
             
-            guard let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else {return}
+            guard let loginVC = storyboard?.instantiateViewController(
+                withIdentifier: "LoginVC"
+                ) as? LoginVC
+                else {return}
             self.present(loginVC, animated: true)
         }
         else if code == "2"{
@@ -167,7 +178,10 @@ class JoinVC2 : UIViewController, NetworkCallback, UIGestureRecognizerDelegate, 
         
     }
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+    func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldReceive touch: UITouch
+        ) -> Bool {
         if(touch.view?.isDescendant(of: stackView))!{
             return false
         }
@@ -181,8 +195,18 @@ class JoinVC2 : UIViewController, NetworkCallback, UIGestureRecognizerDelegate, 
     }
     
     func registerForKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector:#selector(keyboardWillShow),
+            name: .UIKeyboardWillShow,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector:#selector(keyboardWillHide),
+            name: .UIKeyboardWillHide,
+            object: nil
+        )
     }
     func unregisterForKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name:.UIKeyboardWillShow, object: nil)
@@ -191,7 +215,8 @@ class JoinVC2 : UIViewController, NetworkCallback, UIGestureRecognizerDelegate, 
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if check {
-            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey]
+                as? NSValue)?.cgRectValue {
                 centerConstraintY.constant = -130
                 check = false
                 logoLabel.isHidden = true
@@ -200,7 +225,8 @@ class JoinVC2 : UIViewController, NetworkCallback, UIGestureRecognizerDelegate, 
         }
     }
     @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey]
+            as? NSValue)?.cgRectValue {
             centerConstraintY.constant = 0
             check = true
             logoLabel.isHidden = false

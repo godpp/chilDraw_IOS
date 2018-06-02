@@ -1,26 +1,32 @@
 PODS:
-  - Alamofire (4.5.1)
+  - Alamofire (4.7.2)
   - AlamofireObjectMapper (5.0.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.0)
-  - Kingfisher (4.3.1)
+  - AMProgressBar (0.1.0)
+  - Kingfisher (4.8.0)
   - ObjectMapper (3.1.0)
-  - SwiftyJSON (4.0.0)
+  - SwiftCharts (0.6.1)
+  - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireObjectMapper
+  - AMProgressBar
   - Kingfisher
   - ObjectMapper
+  - SwiftCharts
   - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
-  Kingfisher: 75541c4b62f02e1fde6f9772303de3d9ebe8f5b3
+  AMProgressBar: 3f4671c4af4cb4fc9864ddc0a688450c8c7d1561
+  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
-  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  SwiftCharts: 77378d6cf667e95f9c79a745b6778e66eed5339c
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: db93c6421cb92ee17cfea58ed3e779aaf7044540
+PODFILE CHECKSUM: 9d3fe4a8d80357b2326ae411ec101ee3e41c6747
 
 COCOAPODS: 1.4.0

@@ -18,7 +18,9 @@ class SplashVC : UIViewController {
     
     func autoLoginAndSplash() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds){
-            guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") else {return}
+            guard let loginVC = self.storyboard?.instantiateViewController(
+                withIdentifier: "LoginVC")
+                else {return}
             self.present(loginVC, animated: true, completion: nil)
         }
     }

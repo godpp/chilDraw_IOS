@@ -12,13 +12,13 @@ import ObjectMapper
 class DrawVO : Mappable {
     var words : String?
     var msg : String?
-    var result : Bool?
+    var pack: DrawTempVO?
     
     required init?(map:Map){}
     
     func mapping(map: Map) {
         words <- map["words"]
         msg <- map["msg"]
-        result <- map["result"]
+        pack <- map["pack"]
     }
 }

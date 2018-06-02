@@ -15,7 +15,7 @@ class DrawnResultVO : Mappable{
     var draw: String?
     var draw_date: String?
     var score: Int?
-    
+
     required init?(map: Map) {}
     
     func mapping(map: Map) {

@@ -20,7 +20,13 @@ class LoginModel : NetworkModel{
             "pwd": pwd
         ]
         
-        Alamofire.request(URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: nil).responseObject{
+        Alamofire.request(
+            URL,
+            method: .post,
+            parameters: body,
+            encoding: JSONEncoding.default,
+            headers: nil
+            ).responseObject{
             (response:DataResponse<LoginVO>) in
             switch response.result {
             case .success:

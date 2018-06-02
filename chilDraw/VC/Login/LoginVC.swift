@@ -31,6 +31,9 @@ class LoginVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
         self.view.addGestureRecognizer(tap)
         self.initAddTarget()
         unableLoginBtn()
+        self.emailTxt.delegate = self
+        self.pwdTxt.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,9 +44,21 @@ class LoginVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
     }
     
     @IBAction func RegisterBtn(_ sender: Any) {
-        guard let joinVC1 = storyboard?.instantiateViewController(withIdentifier: "JoinVC1") as? JoinVC1 else {return}
+        guard let joinVC1 = storyboard?.instantiateViewController(withIdentifier: "JoinVC1")
+            as? JoinVC1
+            else {return}
         self.present(joinVC1, animated: true)
     }
+
+    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTxt {
+            pwdTxt.becomeFirstResponder()
+        } else if textField == pwdTxt {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+
     
     func initAddTarget(){
         loginBtn.addTarget(self, action: #selector(login), for: .touchUpInside)
@@ -74,7 +89,10 @@ class LoginVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
         }
     }
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+    func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldReceive touch: UITouch
+        ) -> Bool {
         if(touch.view?.isDescendant(of: loginStackView))!{
             return false
         }
@@ -87,8 +105,18 @@ class LoginVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
     }
     
     func registerForKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector:#selector(keyboardWillShow),
+            name: .UIKeyboardWillShow,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector:#selector(keyboardWillHide),
+            name: .UIKeyboardWillHide,
+            object: nil
+        )
     }
     func unregisterForKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name:.UIKeyboardWillShow, object: nil)
@@ -97,7 +125,8 @@ class LoginVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if check {
-            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey]
+                as? NSValue)?.cgRectValue {
                 centerConstraintY.constant = -150
                 check = false
                 logoImgView.isHidden = true
@@ -106,7 +135,8 @@ class LoginVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
         }
     }
     @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey]
+            as? NSValue)?.cgRectValue {
             centerConstraintY.constant = 150
             check = true
             logoImgView.isHidden = false
@@ -122,7 +152,10 @@ class LoginVC : UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
             ud.synchronize()
             let main_storyboard = UIStoryboard(name: "Main", bundle: nil)
             //메인 뷰컨트롤러 접근
-            guard let main = main_storyboard.instantiateViewController(withIdentifier: "MainVC") as? MainVC else {return}
+            guard let main = main_storyboard.instantiateViewController(
+            withIdentifier: "MainVC"
+            ) as? MainVC
+            else {return}
             self.present(main, animated: true)
         }
         else{

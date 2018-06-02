@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '11.2'
+platform :ios, '10.0'
 use_frameworks!
 
 target 'chilDraw' do
@@ -8,4 +8,6 @@ target 'chilDraw' do
     pod 'Kingfisher'
     pod 'ObjectMapper'
     pod 'AlamofireObjectMapper'
+    pod 'SwiftCharts'
+    pod 'AMProgressBar'
 end

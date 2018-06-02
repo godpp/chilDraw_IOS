@@ -64,6 +64,19 @@ class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
         simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인하세요.")
     }
     
+    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameTxt {
+            emailTxt.becomeFirstResponder()
+        } else if textField == emailTxt {
+            pwdTxt.becomeFirstResponder()
+        } else if textField == pwdTxt{
+            confirmpwdTxt.becomeFirstResponder()
+        } else if textField == confirmpwdTxt{
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
     //중복확인 모델
     @objc func duplicateCheck(_ sender: UITextField) {
         let model = JoinModel(self)
@@ -102,7 +115,9 @@ class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
         email = gsno(emailTxt.text)
         pwd = gsno(confirmpwdTxt.text)
         
-        guard let joinVC2 = storyboard?.instantiateViewController(withIdentifier : "JoinVC2") as? JoinVC2
+        guard let joinVC2 = storyboard?.instantiateViewController(
+            withIdentifier : "JoinVC2"
+            ) as? JoinVC2
             else{return}
         
         joinVC2.emailData = email
@@ -122,6 +137,11 @@ class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
         pwdChk.isHidden = true
         confpwdChk.isHidden = true
         unablenextBtn()
+        
+        self.usernameTxt.delegate = self
+        self.emailTxt.delegate = self
+        self.pwdTxt.delegate = self
+        self.confirmpwdTxt.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -170,7 +190,15 @@ class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
     }
     
     @objc func isValid(){
-        if !((usernameTxt.text?.isEmpty)! || (emailTxt.text?.isEmpty)! || (pwdTxt.text?.isEmpty)! || (confirmpwdTxt.text?.isEmpty)! || (nameChk.isHidden) == false || (emailChk.isHidden) == false || pwdChk.isHidden == false || confpwdChk.isHidden == false) {
+        if !((usernameTxt.text?.isEmpty)! ||
+            (emailTxt.text?.isEmpty)! ||
+            (pwdTxt.text?.isEmpty)! ||
+            (confirmpwdTxt.text?.isEmpty)! ||
+            (nameChk.isHidden) == false ||
+            (emailChk.isHidden) == false ||
+            pwdChk.isHidden == false ||
+            confpwdChk.isHidden == false
+            ) {
             
             enablenextBtn()
         }
@@ -192,7 +220,10 @@ class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
         isValid()
     }
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+    func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldReceive touch: UITouch
+        ) -> Bool {
         if(touch.view?.isDescendant(of: joinStackView))!{
             return false
         }
@@ -206,8 +237,18 @@ class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
     }
     
     func registerForKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector:#selector(keyboardWillShow),
+            name: .UIKeyboardWillShow,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector:#selector(keyboardWillHide),
+            name: .UIKeyboardWillHide,
+            object: nil
+        )
     }
     func unregisterForKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name:.UIKeyboardWillShow, object: nil)
@@ -216,7 +257,8 @@ class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if check {
-            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey]
+                as? NSValue)?.cgRectValue {
                 centerConstraintY.constant = -130
                 check = false
                 logoLabel.isHidden = true
@@ -225,7 +267,8 @@ class JoinVC1 : UIViewController, UIGestureRecognizerDelegate, NetworkCallback{
         }
     }
     @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey]
+            as? NSValue)?.cgRectValue {
             centerConstraintY.constant = 0
             check = true
             logoLabel.isHidden = false
