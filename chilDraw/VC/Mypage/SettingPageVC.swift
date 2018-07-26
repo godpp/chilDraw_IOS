@@ -156,7 +156,7 @@ class SettingPageVC : UIViewController, UICollectionViewDelegate, UICollectionVi
         popupViewCenterXConstraint.constant = 0
         UIView.animate(withDuration: 0.5, animations: {
             self.view.layoutIfNeeded()
-        })
+        }   )
     }
     @IBAction func popupviewCancelButton(_ sender: Any) {
         graybackgroundImageView.isHidden = true
