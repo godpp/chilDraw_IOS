@@ -3,6 +3,7 @@
 신경망 학습을 이용한 유아 영어 교육 애플리케이션
 
 Blog : <https://godpp.github.io/2018/03/31/chilDraw-IOS-IPAD-App/>
+데모영상 : <https://youtu.be/kJvd6ovibpw>
 
 ## # 개요
 
