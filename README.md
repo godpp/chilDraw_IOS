@@ -4,7 +4,7 @@
 
 Blog : <https://godpp.github.io/2018/03/31/chilDraw-IOS-IPAD-App/>
 
-데모영상 : <https://youtu.be/Oz8dfvZYVcw>
+데모영상 : <https://youtu.be/kJvd6ovibpw>
 
 ## # 개요
 
