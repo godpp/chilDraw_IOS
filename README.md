@@ -93,7 +93,7 @@ IT를 접목한 유아 영어 교육인 에듀테크, 재미와 반복학습의 
   } 
 ```
 
-## # 워크플로우
+## # 스크린샷
 
 <img src = "/image/childraw_워크플로우_1.png">
 <img src = "/image/childraw_워크플로우_2.png">
