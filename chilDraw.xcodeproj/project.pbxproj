@@ -158,17 +158,17 @@
 				4C0850531FCD34DD007B6792 /* AppDelegate.swift */,
 				4CB6A30C1FDDA7E60028B889 /* Extension.swift */,
 				4C08505D1FCD34DD007B6792 /* Assets.xcassets */,
-				4C0850711FCD3711007B6792 /* Storyboard */,
 				4CB6A3041FDD9E210028B889 /* Protocol */,
-				4C08506A1FCD3564007B6792 /* VO */,
-				4C0850691FCD355A007B6792 /* Model */,
-				4C0850681FCD354E007B6792 /* VC */,
+				4C0850691FCD355A007B6792 /* Network */,
+				4C08506A1FCD3564007B6792 /* Model */,
+				BC08C67C21B3C85F00AFC874 /* View */,
+				4C0850681FCD354E007B6792 /* Controller */,
 				4C08505A1FCD34DD007B6792 /* chilDraw.xcdatamodeld */,
 			);
 			path = chilDraw;
 			sourceTree = "<group>";
 		};
-		4C0850681FCD354E007B6792 /* VC */ = {
+		4C0850681FCD354E007B6792 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				4C0850731FCD3739007B6792 /* Home */,
@@ -177,10 +177,10 @@
 				4C0850721FCD372B007B6792 /* Login */,
 				4C0C97EE2093011E00DB39F7 /* Mypage */,
 			);
-			path = VC;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		4C0850691FCD355A007B6792 /* Model */ = {
+		4C0850691FCD355A007B6792 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				4CB6A3021FDD9DE90028B889 /* NetworkModel.swift */,
@@ -189,10 +189,10 @@
 				4CB36F162024430B0003ED35 /* MainModel.swift */,
 				4C0C97F52095F74800DB39F7 /* SettingModel.swift */,
 			);
-			path = Model;
+			path = Network;
 			sourceTree = "<group>";
 		};
-		4C08506A1FCD3564007B6792 /* VO */ = {
+		4C08506A1FCD3564007B6792 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				4CB6A30A1FDDA1CB0028B889 /* JoinMessageVO.swift */,
@@ -208,7 +208,7 @@
 				4CF1E9ED209B8C8B00E11B5D /* VoiceResultVO.swift */,
 				4C74801020B7042600F4A041 /* GraphVO.swift */,
 			);
-			path = VO;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		4C0850711FCD3711007B6792 /* Storyboard */ = {
@@ -309,6 +309,14 @@
 				3AC49D4F29D5C3F6E4552025 /* Pods-chilDraw.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		BC08C67C21B3C85F00AFC874 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4C0850711FCD3711007B6792 /* Storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
